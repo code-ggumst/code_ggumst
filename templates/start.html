@@ -11,33 +11,29 @@
 
     <script type="text/javascript">
 
-        function question() {
+        $(document).ready(function () {
+            questions();
+        });
 
+        function questions() {
             $.ajax({
-                type: "get",
-                url: "/codeggumst/questions",
+                type: "GET",
+                url: "/quiz",
                 data: {},
                 success: function (response) {
-                    let question = response['question']
-                    let random = Math.random(question);
+                    let quiz = response['all_questions']
 
-                    temple_html = `<h1 onclick="question()" class="question" id="question">
-                                 <span>문제:</span>${random}</h1>`
-
-                    temple_html.append(temple_html)
-
-
+                    console.log(quiz)
                 }
             })
         }
 
 
+
     </script>
 
 
-
 </head>
-
 
 
 <body>
@@ -54,16 +50,25 @@
     <!--문제 출제-->
     <div class="main_question">
         <h1 onclick="question()" class="question" id="question">
-            <span>문제:</span> “To be, or not to be:that is the question(죽느냐, 사느냐. 이것이 문제로다.)” 는 어느 작가가 쓴 어느 작품의 명언인가? </h1>
+            <span>문제:</span> “To be, or not to be:that is the question(죽느냐, 사느냐. 이것이 문제로다.)” 는 어느 작가가 쓴 어느 작품의 명언인가?
+        </h1>
     </div>
 
 
     <!--문제 목록-->
     <div onclick="quiz" class="answer">
-        <div><button class="q q1" onclick="">문제</button></div>
-        <div><button class="q q2" onclick="">문제</button></div>
-        <div><button class="q q3" onclick="">문제</button></div>
-        <div><button class="q q4" onclick="">문제</button></div>
+        <div>
+            <button class="q q1" onclick="">문제</button>
+        </div>
+        <div>
+            <button class="q q2" onclick="">문제</button>
+        </div>
+        <div>
+            <button class="q q3" onclick="">문제</button>
+        </div>
+        <div>
+            <button class="q q4" onclick="">문제</button>
+        </div>
 
     </div>
 
