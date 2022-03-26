@@ -12,24 +12,47 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            questions();
+            quiz_start();
         });
 
-        function questions() {
+        function quiz_start() {
             $.ajax({
                 type: "GET",
                 url: "/quiz",
                 data: {},
                 success: function (response) {
                     let quiz = response['all_questions']
+                    for (let i = 0; i < quiz.length; i++) {
+                        let question = quiz[i]['question']
+                        let answer = quiz[i]['answer']
+                        let w_answer1 = quiz[i]['w_answer1']
+                        let w_answer2 = quiz[i]['w_answer2']
+                        let w_answer3 = quiz[i]['w_answer3']
 
-                    console.log(quiz)
+                        let temp_html = `<h1 class="question" id="question">
+                                            <span>문제:</span> ${question}
+                                         </h1>
+                                         <!--문제 목록-->
+                                         <div onclick="quiz" class="answer">
+                                            <div>
+                                                <button class="q1" onclick="">${answer}</button>
+                                            </div>
+                                            <div>
+                                                <button class="q2" onclick="">${w_answer1}</button>
+                                            </div>
+                                            <div>
+                                                <button class="q3" onclick="">${w_answer2}</button>
+                                            </div>
+                                            <div>
+                                                <button class="q4" onclick="">${w_answer3}</button>
+                                            </div>
+                                         </div>`
+
+                        $('#quiz_box').append(temp_html)
+                    }
                 }
             })
         }
-
-
-
     </script>
 
 
@@ -39,41 +62,17 @@
 <body>
 
 <!--큰 프레임-->
-<div class="fullspace">
+    <div class="fullspace">
 
-    <!--설명-->
-    <div class="explan">
-        <h2>문제를 보고 정답을 선택해 주세요</h2>
-        <hr>
+        <!--설명-->
+        <div class="explan">
+            <h2>문제를 보고 정답을 선택해 주세요</h2>
+            <hr>
+        </div>
+
+        <!--문제 출제-->
+        <div id="quiz_box" class="main_question">
+        </div>
     </div>
-
-    <!--문제 출제-->
-    <div class="main_question">
-        <h1 onclick="question()" class="question" id="question">
-            <span>문제:</span> “To be, or not to be:that is the question(죽느냐, 사느냐. 이것이 문제로다.)” 는 어느 작가가 쓴 어느 작품의 명언인가?
-        </h1>
-    </div>
-
-
-    <!--문제 목록-->
-    <div onclick="quiz" class="answer">
-        <div>
-            <button class="q q1" onclick="">문제</button>
-        </div>
-        <div>
-            <button class="q q2" onclick="">문제</button>
-        </div>
-        <div>
-            <button class="q q3" onclick="">문제</button>
-        </div>
-        <div>
-            <button class="q q4" onclick="">문제</button>
-        </div>
-
-    </div>
-
-
-</div>
-
 </body>
 </html>
