@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>시작페이지</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link href="../static/style.css" rel="stylesheet" type="text/css">
+
+
+
+    <script type="text/javascript">
+
+        function start() {
+
+            $.ajax({
+                type: "get",
+                url: "/start",
+                data: {},
+                success: function (response) {
+                    window.location.href = '/start';
+                }
+            })
+        }
+
+    </script>
+
+</head>
+
+
+<body>
+
+
+</div>
+
+<button onclick="start()"> 첫 시작페이지 입니다.</button>
+
+</body>
+</html>

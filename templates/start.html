@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>퀴즈 페이지</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link href="../static/style.css" rel="stylesheet" type="text/css">
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            quiz_start();
+        });
+
+        function quiz_start() {
+            $.ajax({
+                type: "GET",
+                url: "/quiz",
+                data: {},
+                success: function (response) {
+                    let quiz = response['all_questions']
+                    for (let i = 0; i < quiz.length; i++) {
+                        let question = quiz[i]['question']
+                        let answer = quiz[i]['answer']
+                        let w_answer1 = quiz[i]['w_answer1']
+                        let w_answer2 = quiz[i]['w_answer2']
+                        let w_answer3 = quiz[i]['w_answer3']
+                            let temp_html = `<h1 class="question" id="question">
+                                            <span>문제:</span> ${question}
+                                         </h1>
+                                <!--문제 목록-->
+                                <div onclick="quiz"${question} class="answer">
+                                <div><button class="q q1" onclick="">${answer}</button></div>
+                                <div><button class="q q2" onclick="">${w_answer1}</button></div>
+                                <div><button class="q q3" onclick="">${w_answer2}</button></div>
+                                <div><button class="q q4" onclick="">${w_answer3}</button></div>`
+                                $('#quiz_box').append(temp_html)
+                        }
+                    }
+                })
+            }
+
+</script>
+</head>
+<body>
+    <div class="fullspace">
+
+        <!--설명-->
+        <div class="explan">
+            <h2>문제를 보고 정답을 선택해 주세요</h2>
+            <hr>
+        </div>
+
+        <!--문제 출제-->
+        <div id="quiz_box" class="main_question">
+        </div>
+    </div>
+</body>
+</html>
