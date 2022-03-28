@@ -1,6 +1,6 @@
 /* 두번째 페이지 */
 
-/* main layout */
+    /* main layout */
     .container{
         background-color: rgb(222, 234, 246);
         width: 600px;
@@ -12,8 +12,9 @@
         border-radius: 40px;
     }
     /* 퀴즈 헤드라인 */
-    .quiz{
+    .head{
         margin: 10px;
+        font-family: 'Jua', sans-serif;
     }
     /* 문제와 답 layout*/
     .main_page{
@@ -46,7 +47,7 @@
         margin: 0px 0px 10px 0px;
         width:  300px;
         height: 50px;
-        font-family: 'Jua', sans-serif;
+        /*font-family: 'Jua', sans-serif;*/
     }
 
 

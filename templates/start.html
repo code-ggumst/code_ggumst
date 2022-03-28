@@ -29,8 +29,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
+    <script>
+        function count(){
+            let count=0;
+            count=count+1;
+            document.querySelector("#result").innerText=count;
+        }
+    </script>
+
+
+
 
 </head>
+
+
 
 
 
@@ -42,7 +54,9 @@
 
         <!--퀴즈 헤드라인-->
         <div class="quiz_head">
-            <h3 class="quiz">Quiz</h3>
+           <span class="head">Quiz</span>
+            <span class="head" id="result">0</span>
+            <span class="head">/15</span>
         </div>
 
     <!--main_page-->
@@ -55,14 +69,11 @@
 
         <!--정답-->
          <div class="quiz_button">
-             <div><button type="button" class="q">돛새치</button></div>
-             <div><button type="button" class="q">개복치</button></div>
-             <div><button type="button" class="q">금붕어</button></div>
-             <div><button type="button" class="q">구피</button></div>
+             <div><button onclick="count()" type="button" class="q">돛새치</button></div>
+             <div><button onclick="count()" type="button" class="q">개복치</button></div>
+             <div><button onclick="count()" type="button" class="q">금붕어</button></div>
+             <div><button onclick="count()" type="button" class="q">구피</button></div>
          </div>
-
-
-
 
     </div>
 
