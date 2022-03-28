@@ -1,34 +1,53 @@
-        .explan {
-            width: 500px;
-            margin: 80px auto;
-            padding: 0px;
-            text-align: center;
-        }
+/* 두번째 페이지 */
 
-        .main_question {
-            width: 900px;
-            margin: auto;
-            padding: 10px;
-            text-align: center;
-        }
+    /* main layout */
+    .container{
+        background-color: rgb(222, 234, 246);
+        width: 600px;
+        height: 700px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 40px;
+    }
+    /* 퀴즈 헤드라인 */
+    .head{
+        margin: 10px;
+        font-family: 'Jua', sans-serif;
+    }
+    /* 문제와 답 layout*/
+    .main_page{
+        width: 550px;
+        height: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    /* 문제 */
+    .question{
+        margin: 50px 0px 80px 0px ;
+    }
 
-        .playbutton {
-            width: 200px;
-            margin: auto;
-            padding: 0px;
-            text-align: center;
-        }
+    /* 정답 버튼 툴 */
+    .quiz_button{
+        height: 350px;
+        position: absolute;
+        width: 550px;
+        top: 50%;
+    }
 
-        .answer {
-            width: 500px;
-            margin: 100px auto;
-            padding: 0px;
-            text-align: center;
-        }
+    /* 정답버튼 */
+    .q{
+        background-color: rgb(248, 203, 172);
+        border: 0px;
+        border-radius: 8px;
+        margin: 0px 0px 10px 0px;
+        width:  300px;
+        height: 50px;
+        /*font-family: 'Jua', sans-serif;*/
+    }
 
-        .q {
-            margin: 10px auto;
-            width: 300px;
-            text-align: center;
-        }
 
