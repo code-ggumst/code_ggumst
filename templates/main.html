@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/dhstyle.css">
-    <link rel="short icon" href="img/icon.png">
+    <link rel="short icon" href="/static/img/icon.png">
 
         <script type="text/javascript">
 
@@ -57,16 +57,16 @@
                 <p>여러분이 알고 있는 상식!</br>
                 어디까지 알고 계신가요?</p>
                 <div class="main_img">
-                    <img id="question_img" src="img/main.png">
+                    <img id="question_img" src="/static/img/main.png">
                 </div>
                 <p>퀴즈를 맞춰서</br>본인의 상식 수준을 확인하세요!</p>
             </div>
             <!--시작버튼-->
-            <div class="start_button">
+            <div onclick="start()" class="start_button">
                 <button type="button" class="btn btn-warning">시작하기</button>
             </div>
         </div>
     </div>
-    <script onclick="start" type="text/javascript" src="../dh.js"></script>
+    <script type="text/javascript" src="../static/dh.js"></script>
 </body>
 </html>
