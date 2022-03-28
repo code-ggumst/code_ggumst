@@ -11,28 +11,6 @@
 
     <script type="text/javascript">
 
-        function question() {
-
-            $.ajax({
-                type: "get",
-                url: "/codeggumst/questions",
-                data: {},
-                success: function (response) {
-                    let question = response['question']
-                    let random = Math.random(question);
-
-                    temple_html = `<h1 onclick="question()" class="question" id="question">
-                                 <span>문제:</span>${random}</h1>`
-
-                    temple_html.append(temple_html)
-
-
-                }
-            })
-        }
-
-
-    </script>
 
 
 
