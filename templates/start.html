@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>퀴즈 페이지</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link href="../static/style.css" rel="stylesheet" type="text/css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 
-    <script type="text/javascript">
 
+    <title>두번째 페이지</title>
 
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
 
 
 </head>
@@ -20,30 +32,36 @@
 
 <body>
 
-<!--큰 프레임-->
-<div class="fullspace">
+<!--main layout-->
+<div class="container">
 
-    <!--설명-->
-    <div class="explan">
-        <h2>문제를 보고 정답을 선택해 주세요</h2>
-        <hr>
+
+        <!--퀴즈 헤드라인-->
+        <div class="quiz_head">
+            <h3 class="quiz">Quiz</h3>
+        </div>
+
+    <!--main_page-->
+    <div class="main_page">
+
+        <!--문제 출제-->
+        <div class="question">
+            <h2>다음 중 가장 빠른 물고기는??</h2>
+        </div>
+
+        <!--정답-->
+         <div class="quiz_button">
+             <div><button type="button" class="btn btn-success">돛새치</button></div>
+             <div><button type="button" class="btn btn-success">개복치</button></div>
+             <div><button type="button" class="btn btn-success">금붕어</button></div>
+             <div><button type="button" class="btn btn-success">구피</button></div>
+         </div>
+
+
+
+
     </div>
 
-    <!--문제 출제-->
-    <div class="main_question">
-        <h1 onclick="question()" class="question" id="question">
-            <span>문제:</span> “To be, or not to be:that is the question(죽느냐, 사느냐. 이것이 문제로다.)” 는 어느 작가가 쓴 어느 작품의 명언인가? </h1>
-    </div>
-
-
-    <!--문제 목록-->
-    <div onclick="quiz" class="answer">
-        <div><button class="q q1" onclick="">문제</button></div>
-        <div><button class="q q2" onclick="">문제</button></div>
-        <div><button class="q q3" onclick="">문제</button></div>
-        <div><button class="q q4" onclick="">문제</button></div>
-
-    </div>
 
 
 </div>

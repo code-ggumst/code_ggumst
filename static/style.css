@@ -1,34 +1,27 @@
-        .explan {
-            width: 500px;
-            margin: 80px auto;
-            padding: 0px;
-            text-align: center;
-        }
 
-        .main_question {
-            width: 900px;
-            margin: auto;
-            padding: 10px;
-            text-align: center;
-        }
+/* main layout */
 
-        .playbutton {
-            width: 200px;
-            margin: auto;
-            padding: 0px;
-            text-align: center;
-        }
+.container{
+    background-color: rgb(222, 234, 246);
+    width: 600px;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+}
 
-        .answer {
-            width: 500px;
-            margin: 100px auto;
-            padding: 0px;
-            text-align: center;
-        }
+.main_page{
+    width: 550px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
 
-        .q {
-            margin: 10px auto;
-            width: 300px;
-            text-align: center;
-        }
-
+.quiz_button div:nth-child(1){
+    font-size: 25px;
+}
