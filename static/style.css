@@ -1,27 +1,36 @@
+/* 두번째 페이지 */
 
 /* main layout */
+    .container{
+        background-color: rgb(222, 234, 246);
+        width: 600px;
+        height: 700px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 40px;
+    }
+    /* 퀴즈 헤드라인 */
+    .quiz{
+        margin: 10px;
+    }
+    /* 문제와 답 layout*/
+    .main_page{
+        width: 550px;
+        height: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    /* 문제 */
+    .question{
+        margin: 50px 0px 60px 0px ;
+    }
 
-.container{
-    background-color: rgb(222, 234, 246);
-    width: 600px;
-    height: 700px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 40px;
-}
-
-.main_page{
-    width: 550px;
-    height: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.quiz_button div:nth-child(1){
-    font-size: 25px;
-}
+    /* 정답버튼 */
+    .quiz_button{
+        height: 350px;
+    }
