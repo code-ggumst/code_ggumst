@@ -1,62 +1,139 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>퀴즈 페이지</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link href="../static/style.css" rel="stylesheet" type="text/css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
+    <title>두번째 페이지</title>
 
-    <script type="text/javascript">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
-        $(document).ready(function () {
-            quiz_start();
-        });
+   <script>
 
+        var i = 0;      //전역변수를 설정해줌
         function quiz_start() {
+            $('#main_page').empty() //초기화
+
+            i++ ;
             $.ajax({
                 type: "GET",
                 url: "/quiz",
                 data: {},
                 success: function (response) {
-                    let quiz = response['all_questions']
-                    for (let i = 0; i < quiz.length; i++) {
-                        let question = quiz[i]['question']
-                        let answer = quiz[i]['answer']
-                        let w_answer1 = quiz[i]['w_answer1']
-                        let w_answer2 = quiz[i]['w_answer2']
-                        let w_answer3 = quiz[i]['w_answer3']
-                            let temp_html = `<h1 class="question" id="question">
-                                            <span>문제:</span> ${question}
-                                         </h1>
-                                <!--문제 목록-->
-                                <div onclick="quiz"${question} class="answer">
-                                <div><button class="q q1" onclick="">${answer}</button></div>
-                                <div><button class="q q2" onclick="">${w_answer1}</button></div>
-                                <div><button class="q q3" onclick="">${w_answer2}</button></div>
-                                <div><button class="q q4" onclick="">${w_answer3}</button></div>`
-                                $('#quiz_box').append(temp_html)
-                        }
-                    }
-                })
-            }
 
-</script>
+                    let all_quiz = response['all_quiz']
+                    let question= all_quiz[i]['question']
+                    let answer = all_quiz[i]['answer']
+                    let w_answer1 = all_quiz[i]['w_answer1']
+                    let w_answer2 = all_quiz[i]['w_answer2']
+                    let w_answer3 = all_quiz[i]['w_answer3']
+
+                    let test = `<!--문제 출제-->
+                                <div class="question">
+                                    <h2>${question}</h2>
+                                </div>
+
+                                <!--정답-->
+                                 <div class="quiz_button">
+                                     <div><button id="confirm1" onclick="quiz_start(); count();" type="button" class="q">${answer}</button></div>
+                                     <div><button id="confirm2" onclick="quiz_start(); count();" type="button" class="q">${w_answer1}</button></div>
+                                     <div><button id="confirm3" onclick="quiz_start(); count();" type="button" class="q">${w_answer2}</button></div>
+                                     <div><button id="confirm4" onclick="quiz_start(); count();" type="button" class="q">${w_answer3}</button></div>
+                                 </div>`
+                    $('#main_page').append(test)
+                }
+            })
+        }
+
+
+   </script>
+
+    <script>
+        let a=0;
+        function count(){
+            a += 1
+            document.querySelector("#result").innerText=a;
+        }
+    </script>
+
+    <!--SweetAlert2-->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+    <script>
+        $().ready(function () {
+            $(".q").click(function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: '정답입니다.',
+                    text: '아무곳을 클릭해 진행 해 주세요',
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $().ready(function () {
+            $(".q").click(function () {
+                Swal.fire({
+                    icon: 'Warning',
+                    title: '오답입니다.',
+                    text: '아무곳을 클릭해 진행 해 주세요',
+                });
+            });
+        });
+    </script>
+
 </head>
 <body>
-    <div class="fullspace">
 
-        <!--설명-->
-        <div class="explan">
-            <h2>문제를 보고 정답을 선택해 주세요</h2>
-            <hr>
+<!--main layout-->
+<div class="container">
+
+
+        <!--퀴즈 헤드라인-->
+        <div class="quiz_head">
+           <span class="head">Quiz</span>
+            <span class="head" id="result">0</span>
+            <span class="head">/15</span>
         </div>
+
+    <!--main_page-->
+    <div id="main_page" class="main_page">
 
         <!--문제 출제-->
-        <div id="quiz_box" class="main_question">
+        <div class="question">
+            <h2>다음 중 가장 빠른 물고기는??</h2>
         </div>
+
+        <!--정답-->
+         <div class="quiz_button">
+             <div><button id="confirm1" onclick="quiz_start(); count();" type="button" class="q">돛새치</button></div>
+             <div><button id="confirm2" onclick="quiz_start(); count();" type="button" class="q">개복치</button></div>
+             <div><button id="confirm3" onclick="quiz_start(); count();" type="button" class="q">금붕어</button></div>
+             <div><button id="confirm4" onclick="quiz_start(); count();" type="button" class="q">구피</button></div>
+         </div>
+
     </div>
+</div>
 </body>
 </html>
