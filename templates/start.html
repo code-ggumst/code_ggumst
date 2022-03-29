@@ -19,6 +19,10 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <!--SweetAlert2-->
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
 
 
 
@@ -29,70 +33,58 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
-   <script>
-
-        var i = 0;      //전역변수를 설정해줌
-        function quiz_start() {
-            $('#main_page').empty() //초기화
-
-            i++ ;
-            $.ajax({
-                type: "GET",
-                url: "/quiz",
-                data: {},
-                success: function (response) {
-
-                    let all_quiz = response['all_quiz']
-                    let question= all_quiz[i]['question']
-                    let answer = all_quiz[i]['answer']
-                    let w_answer1 = all_quiz[i]['w_answer1']
-                    let w_answer2 = all_quiz[i]['w_answer2']
-                    let w_answer3 = all_quiz[i]['w_answer3']
-
-                    let test = `<!--문제 출제-->
-                                <div class="question">
-                                    <h2>${question}</h2>
-                                </div>
-
-                                <!--정답-->
-                                 <div class="quiz_button">
-                                     <div><button id="confirm1" onclick="quiz_start(); count();" type="button" class="q">${answer}</button></div>
-                                     <div><button id="confirm2" onclick="quiz_start(); count();" type="button" class="q">${w_answer1}</button></div>
-                                     <div><button id="confirm3" onclick="quiz_start(); count();" type="button" class="q">${w_answer2}</button></div>
-                                     <div><button id="confirm4" onclick="quiz_start(); count();" type="button" class="q">${w_answer3}</button></div>
-                                 </div>`
-                    $('#main_page').append(test)
-                }
-            })
-        }
 
 
-   </script>
+
+           <script>
+               $().ready(quiz_start())
+
+              var i = 0;      //전역변수를 설정해줌
+              function quiz_start() {
+
+                  $('#main_page').empty() //초기화
+
+                  i++;
+                  $.ajax({
+                      type: "GET",
+                      url: "/quiz",
+                      data: {},
+                      success: function (response) {
+
+                          let all_quiz = response['all_quiz']
+                          let question = all_quiz[i]['question']
+                          let answer = all_quiz[i]['answer']
+                          let w_answer1 = all_quiz[i]['w_answer1']
+                          let w_answer2 = all_quiz[i]['w_answer2']
+                          let w_answer3 = all_quiz[i]['w_answer3']
+
+                          let test = `<!--문제 출제-->
+                                        <div class="question">
+                                            <h2>${question}</h2>
+                                        </div>
+
+                                        <!--정답-->
+                                         <div class="quiz_button">
+                                             <div><button id="confirm1" onclick="quiz_start(); count(); check();" type="button" class="q">${answer}</button></div>
+                                             <div><button id="confirm2" onclick="quiz_start(); count(); check();" type="button" class="q">${w_answer1}</button></div>
+                                             <div><button id="confirm3" onclick="quiz_start(); count(); check();" type="button" class="q">${w_answer2}</button></div>
+                                             <div><button id="confirm4" onclick="quiz_start(); count(); check();" type="button" class="q">${w_answer3}</button></div>
+                                         </div>`
+                          $('#main_page').append(test)
+                      }
+                  })
+              }
+           </script>
 
     <script>
-        let a=0;
+        let a=1;
         function count(){
             a += 1
             document.querySelector("#result").innerText=a;
         }
     </script>
 
-    <!--SweetAlert2-->
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-
-    <script>
-        $().ready(function () {
-            $(".q").click(function () {
-                Swal.fire({
-                    icon: 'success',
-                    title: '정답입니다.',
-                    text: '아무곳을 클릭해 진행 해 주세요',
-                });
-            });
-        });
-    </script>
 
     <script>
         $().ready(function () {
@@ -100,10 +92,25 @@
                 Swal.fire({
                     icon: 'Warning',
                     title: '오답입니다.',
-                    text: '아무곳을 클릭해 진행 해 주세요',
+                    text: '아무 곳을 클릭해 진행 해 주세요',
                 });
             });
         });
+    </script>
+
+
+    <script>
+
+        function check() {
+            Swal.fire({
+                icon: 'Warning',
+                title: '오답입니다.',
+                text: '아무 곳을 클릭해 진행 해 주세요',
+            });
+        };
+
+
+
     </script>
 
 
@@ -122,32 +129,14 @@
         <!--퀴즈 헤드라인-->
         <div class="quiz_head">
            <span class="head">Quiz</span>
-            <span class="head" id="result">0</span>
+            <span class="head" id="result">1</span>
             <span class="head">/15</span>
         </div>
 
     <!--main_page-->
     <div id="main_page" class="main_page">
-
-        <!--문제 출제-->
-        <div class="question">
-            <h2>다음 중 가장 빠른 물고기는??</h2>
-        </div>
-
-        <!--정답-->
-         <div class="quiz_button">
-             <div><button id="confirm1" onclick="quiz_start(); count();" type="button" class="q">돛새치</button></div>
-             <div><button id="confirm2" onclick="quiz_start(); count();" type="button" class="q">개복치</button></div>
-             <div><button id="confirm3" onclick="quiz_start(); count();" type="button" class="q">금붕어</button></div>
-             <div><button id="confirm4" onclick="quiz_start(); count();" type="button" class="q">구피</button></div>
-         </div>
-
-
     </div>
-
-
-
-</div>
+    </div>
 
 </body>
 </html>
