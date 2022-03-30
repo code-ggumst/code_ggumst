@@ -31,6 +31,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
+    <script type="text/javascript">
+
+        function start() {
+
+            $.ajax({
+                type: "get",
+                url: "/start",
+                data: {},
+                success: function (response) {
+                    window.location.href = '/start';
+                }
+            })
+        }
+
+    </script>
+
+
         <script>
             function check1(){
                 $.ajax({
@@ -203,6 +220,23 @@
             document.querySelector("#result").innerText = a;
         }
     </script>
+<!--정답일 경우-->
+    <script>
+        function socore() {
+
+            $.ajax({
+                type: "get",
+                url: "/score",
+                data: {},
+                success: function (response) {
+
+                }
+            })
+        }
+
+
+
+    </script>
 
 
 <!--        <script>-->
@@ -263,8 +297,17 @@
         </div>
     </div>
 
+    <!--restart-->
+    <div onclick="start()" class="start_button">
+        <button type="button" class="btn btn-warning">다시 시작하기</button>
+    </div>
 
 </div>
 
+
+
 </body>
+
+
+
 </html>
