@@ -23,13 +23,13 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+
     <title>두번째 페이지</title>
 
     <link rel="stylesheet" href="/static/style.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-
 
     <script type="text/javascript">
 
@@ -62,9 +62,6 @@
         }
         </script>
 
-  
-
-
     <script>
 
         $().ready(quiz_start()) //페이지 로딩하자마자 바로 quiz_start()를 실행!
@@ -74,8 +71,7 @@
         var answer2
         var answer3
         var answer4
-
-        var i = 0;      // 전역변수를 설정해줌으로 클릭시=quiz_start()실행 할때 마다 i값을 차례대로 뽑음
+        var i = 0;// 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음.
 
         function quiz_start() {
             $('#main_page').empty() //화면에 나온 값을 다 지우고 새로 붙여쓰기 함
@@ -92,7 +88,6 @@
                     answer3 = all_quiz[i]['answer3']
                     answer4 = all_quiz[i]['answer4']
 
-
                     //let real_answer = all_quiz[i]['correct']
 
                     // let word = [answer, w_answer1, w_answer2, w_answer3]
@@ -100,7 +95,6 @@
                     // let bb = word[Math.floor(Math.random() * word.length)]
                     // let cc = word[Math.floor(Math.random() * word.length)]
                     // let dd = word[Math.floor(Math.random() * word.length)]
-
 
                     let test = `<!--문제 출제-->
                                 <div class="question">
@@ -114,6 +108,15 @@
                                     <div><button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button></div>
                                     <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
                                  </div>`
+
+
+
+                    // if(word[0] == word[4]){
+                    // console.log("맞음")
+                    // }
+                    // else {
+                    //     console.log("틀림")
+                    // }
 
 
                     $('#main_page').append(test)
@@ -177,6 +180,24 @@
 
 
 
+        // function check() {
+        //     let div1 = document.querySelector('#aba');
+        //     console.log(div1)
+        // }
+
+        // function check() {
+        //
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/check",
+        //         data: {answer_click: $(this).data()},
+        //         success: function (response) {
+        //             alert(response["msg"])
+        //         }
+        //     })
+        // }
+
+
 
     </script>
 
@@ -199,32 +220,54 @@
             document.querySelector("#result").innerText = a;
         }
     </script>
+<!--&lt;!&ndash;정답일 경우&ndash;&gt;-->
+<!--    <script>-->
+<!--        function socore() {-->
 
-  <!--정답일 경우-->
-    <script>
-        function socore() {
+<!--            $.ajax({-->
+<!--                type: "get",-->
+<!--                url: "/score",-->
+<!--                data: {},-->
+<!--                success: function (response) {-->
 
-            $.ajax({
-                type: "get",
-                url: "/score",
-                data: {},
-                success: function (response) {
-
-                }
-            })
-        }
-
+<!--                }-->
+<!--            })-->
+<!--        }-->
 
 
 
-        let a = 1;
-        function count() {
-            a += 1
-            document.querySelector("#result").innerText = a;
-        }
-    </script>
+<!--    </script>-->
 
 
+<!--        <script>-->
+<!--            $().ready(function () {-->
+<!--                $('.q').click(function () {-->
+<!--                    Swal.fire({-->
+<!--                        icon: 'success',-->
+<!--                        title: '정답입니다.',-->
+<!--                        text: '아무곳을 클릭해 진행 해 주세요.',-->
+<!--                    });-->
+<!--                });-->
+<!--            });-->
+<!--        </script>-->
+
+    <!--    <script>-->
+    <!--            function o() {-->
+    <!--                Swal.fire({-->
+    <!--                    icon: 'success',-->
+    <!--                    title: '정답입니다.'-->
+    <!--                });-->
+    <!--            };-->
+    <!--    </script>-->
+
+    <!--    <script>-->
+    <!--            function x() {-->
+    <!--                Swal.fire({-->
+    <!--                    icon: 'Warning',-->
+    <!--                    title: '정답입니다.'-->
+    <!--                });-->
+    <!--            };-->
+    <!--    </script>-->
 
 
 </head>
@@ -234,38 +277,9 @@
 
 
 
-<!--main layout-->
-<div class="container">
-
-
-    <!--퀴즈 헤드라인-->
-    <div class="quiz_head">
-        <span class="head">Quiz</span>
-        <span class="head" id="result">1</span>
-        <span class="head">/15</span>
-    </div>
-
-    <!--main_page-->
-    <div id="main_page" class="main_page">
-
-        <!--문제 출제-->
-        <div class="question">
-
-        </div>
-    </div>
-
-    <!--restart-->
-    <div onclick="start()" class="start_button">
-        <button type="button" class="btn btn-warning">다시 시작하기</button>
-    </div>
-
-</div>
-
-
-
-
     <!--main layout-->
     <div class="container">
+
 
         <!--퀴즈 헤드라인-->
         <div class="quiz_head">
@@ -275,11 +289,22 @@
         </div>
 
         <!--main_page-->
-        <div id="main_page" class="main_page"></div>
+        <div id="main_page" class="main_page">
+
+            <!--문제 출제-->
+            <div class="question">
+
+            </div>
+        </div>
+
+        <!--restart-->
+        <div onclick="start()" class="start_button">
+            <button type="button" class="btn btn-warning">다시 시작하기</button>
+        </div>
+
+
     </div>
 
 </body>
-
-
 
 </html>
