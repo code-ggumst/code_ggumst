@@ -49,3 +49,9 @@
         height: 50px;
         /*font-family: 'Jua', sans-serif;*/
     }
+
+    /* 다시 시작하기 */
+    .start_button {
+        float: right;
+        overflow:auto;
+    }

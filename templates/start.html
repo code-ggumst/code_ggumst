@@ -30,7 +30,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
+
+    <script type="text/javascript">
+
+        function start() {
+
+            $.ajax({
+                type: "get",
+                url: "/start",
+                data: {},
+                success: function (response) {
+                    window.location.href = '/start';
+                }
+            })
+        }
+
+    </script>
+
+
+        <script>
+            function check1(){
+                $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click: answer1},
+                success: function (response) {
+                    console.log(answer1)
+                    alert(response["msg"])
+                }
+            })
+        }
+        </script>
+
+  
+
+
     <script>
+
         $().ready(quiz_start()) //페이지 로딩하자마자 바로 quiz_start()를 실행!
 
         var question
@@ -38,6 +74,7 @@
         var answer2
         var answer3
         var answer4
+
         var i = 0;      // 전역변수를 설정해줌으로 클릭시=quiz_start()실행 할때 마다 i값을 차례대로 뽑음
 
         function quiz_start() {
@@ -55,6 +92,16 @@
                     answer3 = all_quiz[i]['answer3']
                     answer4 = all_quiz[i]['answer4']
 
+
+                    //let real_answer = all_quiz[i]['correct']
+
+                    // let word = [answer, w_answer1, w_answer2, w_answer3]
+                    // let aa = word[Math.floor(Math.random() * word.length)]
+                    // let bb = word[Math.floor(Math.random() * word.length)]
+                    // let cc = word[Math.floor(Math.random() * word.length)]
+                    // let dd = word[Math.floor(Math.random() * word.length)]
+
+
                     let test = `<!--문제 출제-->
                                 <div class="question">
                                     <h2>${question}</h2>
@@ -68,54 +115,106 @@
                                     <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
                                  </div>`
 
+
                     $('#main_page').append(test)
                 }
+
+
+            })
+
+
+        }
+
+
+        //    //////////////////// 정오답 체크하기 //////////////////////
+        //
+        // function check1() {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/check",
+        //         data: {answer_click: $('#button1').text()},
+        //         success: function (response) {
+        //             alert(response["msg"])
+        //         }
+        //     })
+        // }
+        //
+        // function check2() {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/check",
+        //         data: {answer_click:$('#button2').text()},
+        //         success: function (response) {
+        //             alert(response["msg"])
+        //         }
+        //     })
+        // }                               // 두번째 버튼
+        // function check3() {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/check",
+        //         data: {answer_click:$('#button3').text()},
+        //         success: function (response) {
+        //             alert(response["msg"])
+        //         }
+        //     })
+        // }                               // 세번째 버튼
+        // function check4() {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/check",
+        //         data: {answer_click:$('#button4').text()},
+        //         success: function (response) {
+        //             alert(response["msg"])
+        //         }
+        //     })
+        // }                               // 네번째 버튼
+        // //////////////////// 정오답 체크하기 //////////////////////
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+<!--    <script>-->
+<!--    function check() {-->
+<!--        const div1 = document.getElementById('아이디값 입력');-->
+<!--        console.log(div1.textContent);-->
+<!--    }-->
+<!--    </script>-->
+
+
+    <script>
+        let a = 1;
+
+        function count() {
+            a += 1
+            document.querySelector("#result").innerText = a;
+        }
+    </script>
+
+  <!--정답일 경우-->
+    <script>
+        function socore() {
+
+            $.ajax({
+                type: "get",
+                url: "/score",
+                data: {},
+                success: function (response) {
+
+                }
             })
         }
 
 
-        //////////////////// 정오답 체크하기 //////////////////////
-        function check1() {                                  // 첫번째 버튼
-            $.ajax({
-                type: "POST",
-                url: "/check",
-                data: {answer_click:answer1},
-                success: function (response) {
-                    alert(response["msg"])
-                }
-            })
-        }
-        function check2() {
-            $.ajax({
-                type: "POST",
-                url: "/check",
-                data: {answer_click:answer2},
-                success: function (response) {
-                    alert(response["msg"])
-                }
-            })
-        }                               // 두번째 버튼
-        function check3() {
-            $.ajax({
-                type: "POST",
-                url: "/check",
-                data: {answer_click:answer3},
-                success: function (response) {
-                    alert(response["msg"])
-                }
-            })
-        }                               // 세번째 버튼
-        function check4() {
-            $.ajax({
-                type: "POST",
-                url: "/check",
-                data: {answer_click:answer4},
-                success: function (response) {
-                    alert(response["msg"])
-                }
-            })
-        }                               // 네번째 버튼
-        //////////////////// 정오답 체크하기 //////////////////////
 
 
         let a = 1;
@@ -124,10 +223,47 @@
             document.querySelector("#result").innerText = a;
         }
     </script>
+
+
+
+
 </head>
 
 
 <body>
+
+
+
+<!--main layout-->
+<div class="container">
+
+
+    <!--퀴즈 헤드라인-->
+    <div class="quiz_head">
+        <span class="head">Quiz</span>
+        <span class="head" id="result">1</span>
+        <span class="head">/15</span>
+    </div>
+
+    <!--main_page-->
+    <div id="main_page" class="main_page">
+
+        <!--문제 출제-->
+        <div class="question">
+
+        </div>
+    </div>
+
+    <!--restart-->
+    <div onclick="start()" class="start_button">
+        <button type="button" class="btn btn-warning">다시 시작하기</button>
+    </div>
+
+</div>
+
+
+
+
     <!--main layout-->
     <div class="container">
 
@@ -141,5 +277,9 @@
         <!--main_page-->
         <div id="main_page" class="main_page"></div>
     </div>
+
 </body>
+
+
+
 </html>
