@@ -7,24 +7,21 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
     <!--SweetAlert2-->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-
-
 
     <title>두번째 페이지</title>
 
@@ -33,23 +30,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
-   <script>
+    <script>
         $().ready(quiz_start()) //페이지 로딩하자마자 바로 quiz_start()를 실행!
-        var i = 0;      // 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음
+
+        var question
+        var answer1
+        var answer2
+        var answer3
+        var answer4
+        var i = 0;      // 전역변수를 설정해줌으로 클릭시=quiz_start()실행 할때 마다 i값을 차례대로 뽑음
+
         function quiz_start() {
             $('#main_page').empty() //화면에 나온 값을 다 지우고 새로 붙여쓰기 함
-            i++ ;
+            i++;
             $.ajax({
                 type: "GET",
                 url: "/quiz",
                 data: {},
                 success: function (response) {
                     let all_quiz = response['all_quiz']
-                    let question= all_quiz[i]['question']
-                    let answer = all_quiz[i]['answer']
-                    let w_answer1 = all_quiz[i]['w_answer1']
-                    let w_answer2 = all_quiz[i]['w_answer2']
-                    let w_answer3 = all_quiz[i]['w_answer3']
+                    question = all_quiz[i]['question']
+                    answer1 = all_quiz[i]['answer1']
+                    answer2 = all_quiz[i]['answer2']
+                    answer3 = all_quiz[i]['answer3']
+                    answer4 = all_quiz[i]['answer4']
 
                     let test = `<!--문제 출제-->
                                 <div class="question">
@@ -58,83 +62,86 @@
 
                                 <!--정답-->
                                  <div class="quiz_button">
-                                     <div><button id="confirm1" onclick="quiz_start(); count(); //check();" type="button" class="q">${answer}</button></div>
-                                     <div><button id="confirm2" onclick="quiz_start(); count(); //check();" type="button" class="q">${w_answer1}</button></div>
-                                     <div><button id="confirm3" onclick="quiz_start(); count(); //check();" type="button" class="q">${w_answer2}</button></div>
-                                     <div><button id="confirm4" onclick="quiz_start(); count(); //check();" type="button" class="q">${w_answer3}</button></div>
+                                    <div><button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button></div>
+                                    <div><button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button></div>
+                                    <div><button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button></div>
+                                    <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
                                  </div>`
+
                     $('#main_page').append(test)
                 }
             })
         }
 
 
-   </script>
+        //////////////////// 정오답 체크하기 //////////////////////
+        function check1() {
+            console.log(answer1)// 첫번째 버튼
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click:answer1},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }
 
-    <script>
-        let a=1;
-        function count(){
+        function check2() {
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click:answer2},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }                               // 두번째 버튼
+        function check3() {
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click:answer3},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }                               // 세번째 버튼
+        function check4() {
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click:answer4},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }                               // 네번째 버튼
+        //////////////////// 정오답 체크하기 //////////////////////
+
+
+        let a = 1;
+        function count() {
             a += 1
-            document.querySelector("#result").innerText=a;
+            document.querySelector("#result").innerText = a;
         }
     </script>
-
-
-    <script>
-        $().ready(function () {
-            $('.q').click(function () {
-                Swal.fire({
-                    icon: 'success',
-                    title: '정답입니다.',
-                    text: '아무곳을 클릭해 진행 해 주세요.',
-                });
-            });
-        });
-
-    </script>
-
-<!--    <script>-->
-<!--            function check() {-->
-<!--                Swal.fire({-->
-<!--                    icon: 'Warning',-->
-<!--                    title: '오답입니다.',-->
-<!--                    text: '아무곳을 클릭해 진행 해 주세요',-->
-<!--                });-->
-<!--            };-->
-<!--    </script>-->
-
-
 </head>
 
 
-
-
-
 <body>
-
-<!--main layout-->
-<div class="container">
-
+    <!--main layout-->
+    <div class="container">
 
         <!--퀴즈 헤드라인-->
         <div class="quiz_head">
-           <span class="head">Quiz</span>
+            <span class="head">Quiz</span>
             <span class="head" id="result">1</span>
             <span class="head">/15</span>
         </div>
 
-    <!--main_page-->
-    <div id="main_page" class="main_page">
-
-        <!--문제 출제-->
-        <div class="question">
-
-      </div>
+        <!--main_page-->
+        <div id="main_page" class="main_page"></div>
     </div>
-
-
-
-</div>
-
 </body>
 </html>
