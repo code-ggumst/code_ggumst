@@ -49,7 +49,7 @@ dict = [
         'question': '18세기에서 삼각 무역은 중국, 영국과 ____ 간의 무역을 가르킨다',
         'answer1': '인도',
         'answer2': '프랑스',
-        'answer3': '일본',
+        'answer3': '포르투갈',
         'answer4': '스페인',
         'correct': '인도'
     },
