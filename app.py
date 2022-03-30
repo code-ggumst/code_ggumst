@@ -34,15 +34,14 @@ def questions():
     return jsonify({'all_quiz': quiz})
 
 
-# 정오답 체크하기                                현재 바디부분에 있는 버튼에서만 작동하고, 스크립트의 백틱내에 있는 버튼에는 작동안됨
+# 정오답 체크하기
 @app.route('/check', methods=['POST'])
 def answer_check():
-    answer_receive = request.form['answer_click']                       # 클릭한 버튼의 텍스트 가져오기
-    target_question = db.questions.find_one({'correct':answer_receive}) # 가져온 텍스트가 DB 정답열에 있다면 해당 정답을 가져옴
-    # print(answer_receive)
-    if target_question:                                                 # 정답을 가져왔다면 프론트에 정답 메세지
+    answer_receive = request.form['answer_click']                        # 클릭한 버튼의 텍스트 가져오기
+    target_question = db.questions.find_one({'correct':answer_receive})  # 가져온 텍스트가 DB 정답열에 있다면 해당 정답을 가져옴
+    if target_question:                                                  # 정답을 가져왔다면 프론트에 정답 메세지
         return jsonify({'msg': '정답입니다'})
-    else:                                                               # 가져오지 못했다면 프론트에 오답 메세지
+    else:                                                                # 가져오지 못했다면 프론트에 오답 메세지
         return jsonify({'msg': '오답입니다'})
 
 
