@@ -75,8 +75,7 @@
 
 
         //////////////////// 정오답 체크하기 //////////////////////
-        function check1() {
-            console.log(answer1)// 첫번째 버튼
+        function check1() {                                  // 첫번째 버튼
             $.ajax({
                 type: "POST",
                 url: "/check",
@@ -86,7 +85,6 @@
                 }
             })
         }
-
         function check2() {
             $.ajax({
                 type: "POST",
