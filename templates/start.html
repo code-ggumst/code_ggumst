@@ -55,10 +55,10 @@
 
                                 <!--정답-->
                                  <div class="quiz_button">
-                                     <div><button id="confirm1" onclick="quiz_start(); count(); check();" type="button" class="q">${answer1}</button></div>
-                                     <div><button id="confirm2" onclick="quiz_start(); count(); check();" type="button" class="q">${answer2}</button></div>
-                                     <div><button id="confirm3" onclick="quiz_start(); count(); check();" type="button" class="q">${answer3}</button></div>
-                                     <div><button id="confirm4" onclick="quiz_start(); count(); check();" type="button" class="q">${answer4}</button></div>
+                                    <div><button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button></div>
+                                    <div><button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button></div>
+                                    <div><button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button></div>
+                                    <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
                                  </div>`
 
                     $('#main_page').append(test)
@@ -66,16 +66,51 @@
             })
         }
 
-        function check() {
+
+        //////////////////// 정오답 체크하기 //////////////////////
+        function check1() {                                  // 첫번째 버튼
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click:$(this).text()},
+                data: {answer_click:$('#button1').text()},
                 success: function (response) {
                     alert(response["msg"])
                 }
             })
         }
+
+        function check2() {
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click:$('#button2').text()},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }                               // 두번째 버튼
+        function check3() {
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click:$('#button3').text()},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }                               // 세번째 버튼
+        function check4() {
+            $.ajax({
+                type: "POST",
+                url: "/check",
+                data: {answer_click:$('#button4').text()},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            })
+        }                               // 네번째 버튼
+        //////////////////// 정오답 체크하기 //////////////////////
+
 
         let a = 1;
 
@@ -88,10 +123,12 @@
 
 
 <body>
-
+<button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">돛새치</button>
+<button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">개복치</button>
+<button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">금붕어</button>
+<button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">구피</button>
 <!--main layout-->
 <div class="container">
-
 
     <!--퀴즈 헤드라인-->
     <div class="quiz_head">
@@ -101,16 +138,7 @@
     </div>
 
     <!--main_page-->
-    <div id="main_page" class="main_page">
-
-        <!--문제 출제-->
-        <div class="question">
-
-        </div>
-    </div>
-
-
+    <div id="main_page" class="main_page"></div>
 </div>
-
 </body>
 </html>
