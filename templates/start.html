@@ -33,7 +33,6 @@
 
     <!--다시 퀴즈풀기-->
     <script type="text/javascript">
-
         function start() {
 
             $.ajax({
@@ -45,7 +44,6 @@
                 }
             })
         }
-
     </script>
 
 
@@ -60,11 +58,13 @@
         var answer2
         var answer3
         var answer4
+
         var i = 0;// 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음.
+        var score = 0; //누적점수를 담을 변수 생성
 
         function quiz_start() {
             $('#main_page').empty() //화면에 나온 값을 다 지우고 새로 붙여쓰기 함
-            $('#main_page').slideUp( 100, 'swing' ).delay( 2600 ).slideDown( 100, 'swing' ); //코드 설명 : 함수를불러와서 위로 슬라이드업한다(보이지않음)> 2.6초 시간 지연 > 슬라이드다운 내려옴.
+            $('#main_page').slideUp( 100, 'swing' ).delay( 1800 ).slideDown( 100, 'swing' ); //코드 설명 : 함수를불러와서 위로 슬라이드업한다(보이지않음)> 2.6초 시간 지연 > 슬라이드다운 내려옴.
             i++;
             $.ajax({
                 type: "GET",
@@ -110,11 +110,12 @@
                     let text = response["msg"]
                     let tt = 1;
                     if (text === tt) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
                     } else {
@@ -122,7 +123,7 @@
                             icon: 'warning',
                             title: "오답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
 
@@ -140,11 +141,12 @@
                     let text = response["msg"]
                     let tt = 1;
                     if (text === tt) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
                     } else {
@@ -152,7 +154,7 @@
                             icon: 'warning',
                             title: "오답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
 
@@ -170,11 +172,12 @@
                     let text = response["msg"]
                     let tt = 1;
                     if (text === tt) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
                     } else {
@@ -182,7 +185,7 @@
                             icon: 'warning',
                             title: "오답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
 
@@ -200,11 +203,12 @@
                     let text = response["msg"]
                     let tt = 1;
                     if (text === tt) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
                     } else {
@@ -212,7 +216,7 @@
                             icon: 'warning',
                             title: "오답입니다.",
                             timerProgressBar:true,
-                            timer: 2500,
+                            timer: 1500,
                             showConfirmButton: false
                         });
 
@@ -222,20 +226,58 @@
             })
         }       //네번째 버튼
         //////////////////// 정오답 체크하기 //////////////////////
-
-
-
     </script>
 
 
-    <script>
-        let a = 1;
 
+
+
+
+
+    <!--상단진행도-->
+    <script>
+        var a = 1;  //전역변수를 만들어 주어 <누적점수> 함수에 조건문 실행
+
+        <!--문제 진행단계 상단표시-->
         function count() {
             a += 1
             document.querySelector("#result").innerText = a;
+            if (a == 16) {
+                result()
+            }
         }
+
+        <!--결과페이지 이동 -->
+        function result() {
+            $.ajax({
+                type: "get",
+                url: "/result",
+                data: {},
+                success: function (response) {
+                    window.location.href='/result'
+                }
+            })
+        }
+
+        <!--누적점수-->
+        function plus_score(){
+            score += 1
+            if (a==16){
+                $.ajax({
+                type: "post",
+                url: "/score",
+                data: {score_post:score},
+                success: function (response) {
+                     let a = response["msg"]
+                    console.log(a)
+                }
+            })
+            }
+        }
+
+
     </script>
+
 
 
 </head>
