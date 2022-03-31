@@ -44,5 +44,14 @@ def answer_check():
         return jsonify({'msg': 0 })
 
 
+# 누적된 점수
+@app.route('/score', methods=['POST'])
+def stacked_score():
+    score_receive = request.form['score_post']
+    print(score_receive)
+    if score_receive >= 0:
+        return jsonify({'msg': '점수 받았습니다'})
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
