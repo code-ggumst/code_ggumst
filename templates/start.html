@@ -35,7 +35,6 @@
     <script type="text/javascript">
 
         function start() {
-
             $.ajax({
                 type: "get",
                 url: "/start",
@@ -47,8 +46,6 @@
         }
 
     </script>
-
-
 
 
     <script>
@@ -66,6 +63,7 @@
             $('#main_page').empty() //화면에 나온 값을 다 지우고 새로 붙여쓰기 함
             $('#main_page').slideUp( 100, 'swing' ).delay( 2600 ).slideDown( 100, 'swing' ); //코드 설명 : 함수를불러와서 위로 슬라이드업한다(보이지않음)> 2.6초 시간 지연 > 슬라이드다운 내려옴.
             i++;
+
             $.ajax({
                 type: "GET",
                 url: "/quiz",
@@ -77,7 +75,6 @@
                     answer2 = all_quiz[i]['answer2']
                     answer3 = all_quiz[i]['answer3']
                     answer4 = all_quiz[i]['answer4']
-
 
                     let test = `<!--문제 출제-->
                                 <div class="question">
@@ -94,18 +91,15 @@
 
                     $('#main_page').append(test)
                 }
-
             })
-
         }
-
 
         //////////////////// 정오답 체크하기 //////////////////////
         function check1() {                                  // 첫번째 버튼
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click:answer1},
+                data: {answer_click: answer1},
                 success: function (response) {
                     let text = response["msg"]
                     let tt = 1;
@@ -135,7 +129,7 @@
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click:answer2},
+                data: {answer_click: answer2},
                 success: function (response) {
                     let text = response["msg"]
                     let tt = 1;
@@ -165,7 +159,7 @@
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click:answer3},
+                data: {answer_click: answer3},
                 success: function (response) {
                     let text = response["msg"]
                     let tt = 1;
@@ -195,7 +189,7 @@
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click:answer4},
+                data: {answer_click: answer4},
                 success: function (response) {
                     let text = response["msg"]
                     let tt = 1;
@@ -222,65 +216,60 @@
             })
         }       //네번째 버튼
         //////////////////// 정오답 체크하기 //////////////////////
-
-
-
     </script>
+    <script>
+        let a = 1;
 
-
-        <script>
-            let a = 1;
-
-            function count() {
-                a += 1
-                document.querySelector("#result").innerText = a;
-                if (a==16) { result()}
+        function count() {
+            a += 1
+            document.querySelector("#result").innerText = a;
+            if (document.querySelector('#result').innerText == 2) {
+                setTimeout(() => resultpage(), 2000)
             }
+        }
 
-        </script>
-        <script>
-            function result() {
-                $.ajax({
-                    type: "get",
-                    url: "/result",
-                    data: {},
-                    success: function (response) {
-                        window.location.href = '/result';
-                    }
-                })
-            }
-        </script>
+        function resultpage() {
+            $.ajax({
+                type: "get",
+                url: "/result",
+                data: {},
+                success: function (response) {
+                    window.location.href = '/result';
+                }
+            })
+        }
+    </script>
 </head>
 
 
 <body>
 
-    <!--main layout-->
-    <div class="container">
+<!--main layout-->
+<div class="container">
 
 
-        <!--퀴즈 헤드라인-->
-        <div class="quiz_head">
-            <span class="head">Quiz</span>
-            <span class="head" id="result">1</span>
-            <span class="head">/15</span>
-        </div>
-
-        <!--main_page-->
-        <div id="main_page" class="main_page">
-
-            <!--문제 출제-->
-            <div class="question">
-
-            </div>
-        </div>
-
-        <!--restart-->
-        <div onclick="start()" class="start_button">
-            <button type="button" class="btn btn-warning">다시 시작하기</button>
-        </div>
-
+    <!--퀴즈 헤드라인-->
+    <div class="quiz_head">
+        <span class="head">Quiz</span>
+        <span class="head" id="result">1</span>
+        <span class="head">/15</span>
     </div>
+
+    <!--main_page-->
+    <div id="main_page" class="main_page">
+
+        <!--문제 출제-->
+        <div class="question">
+
+        </div>
+    </div>
+
+    <!--restart-->
+    <div onclick="start()" class="start_button">
+        <button type="button" class="btn btn-warning">다시 시작하기</button>
+    </div>
+
+</div>
 
 </body>
 
