@@ -212,16 +212,28 @@
     </script>
 
 
-    <script>
-        let a = 1;
+        <script>
+            let a = 1;
 
-        function count() {
-            a += 1
-            document.querySelector("#result").innerText = a;
-        }
-    </script>
+            function count() {
+                a += 1
+                document.querySelector("#result").innerText = a;
+                if (a==16) { result()}
+            }
 
-
+        </script>
+        <script>
+            function result() {
+                $.ajax({
+                    type: "get",
+                    url: "/result",
+                    data: {},
+                    success: function (response) {
+                        window.location.href = '/result';
+                    }
+                })
+            }
+        </script>
 </head>
 
 
