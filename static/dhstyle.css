@@ -1,0 +1,45 @@
+/* main layout */
+.container{
+    background-color: #D6E6F5;
+    width: 600px;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+}
+
+.main_page{
+    width: 550px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.main_page .quiz_title{
+    font-size: 50px;
+    font-family: 'Jua', sans-serif;
+}
+
+.content{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.content p:nth-child(1){
+    font-size: 25px;
+}
+
+.content p:nth-child(3){
+    font-size: 20px;
+}
+
+#question_img {
+    width: 350px;
+}
+
+.start_button {
+    font-family: 'Jua', sans-serif;
+}

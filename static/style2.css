@@ -1,0 +1,38 @@
+/* 세번째 페이지 */
+
+
+/* main layout */
+    .container{
+        background-color: rgb(222, 234, 246);
+        width: 600px;
+        height: 700px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 40px;
+    }
+
+.result_frame{
+        width: 550px;
+        height: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+}
+
+.content {
+    font-size: 25px;
+    font-family: 'Jua', sans-serif;
+}
+.quiz_title{
+    font-size: 25px;
+    font-family: 'Jua', sans-serif;
+
+}
+#question_img{
+    width: auto;
+    height: 250px;
+}

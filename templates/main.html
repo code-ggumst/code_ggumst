@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>상식 퀴즈</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/dhstyle.css">
+    <link rel="short icon" href="/static/img/icon2.png">
+
+        <script type="text/javascript">
+
+        function start() {
+
+            $.ajax({
+                type: "get",
+                url: "/start",
+                data: {},
+                success: function (response) {
+                    window.location.href = '/start';
+                }
+            })
+        }
+
+    </script>
+
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        <div class="main_page">
+            <p class="quiz_title">상식 QUIZ</p>
+            <div class="content">
+                <p>여러분이 알고 있는 상식!</br>
+                어디까지 알고 계신가요?</p>
+                <div class="main_img">
+                    <img id="question_img" src="/static/img/main2.png">
+                </div>
+                <p>퀴즈를 맞춰서</br>본인의 상식 수준을 확인하세요!</p>
+            </div>
+            <!--시작버튼-->
+            <div onclick="start()" class="start_button">
+                <button type="button" class="btn btn-warning">시작하기</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
