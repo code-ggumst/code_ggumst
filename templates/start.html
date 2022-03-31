@@ -61,6 +61,7 @@
 
         function quiz_start() {
             $('#main_page').empty() //화면에 나온 값을 다 지우고 새로 붙여쓰기 함
+            $('#main_page').slideUp( 100, 'swing' ).delay( 2600 ).slideDown( 100, 'swing' ); //코드 설명 : 함수를불러와서 위로 슬라이드업한다(보이지않음)> 2.6초 시간 지연 > 슬라이드다운 내려옴.
             i++;
 
             $.ajax({
@@ -106,13 +107,17 @@
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
                     } else {
                         Swal.fire({
                             icon: 'warning',
                             title: "오답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
 
                     }
@@ -132,13 +137,17 @@
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
                     } else {
                         Swal.fire({
                             icon: 'warning',
                             title: "오답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
 
                     }
@@ -158,13 +167,17 @@
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
                     } else {
                         Swal.fire({
                             icon: 'warning',
                             title: "오답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
 
                     }
@@ -184,13 +197,17 @@
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
                     } else {
                         Swal.fire({
                             icon: 'warning',
                             title: "오답입니다.",
-                            text: '아무곳을 클릭해 진행 해 주세요.',
+                            timerProgressBar:true,
+                            timer: 2500,
+                            showConfirmButton: false
                         });
 
                     }
