@@ -225,7 +225,7 @@
             }
         }
 
-        // 결과 페이지 이동 ////
+        //// 결과 페이지 이동 ////
         function result() {
             $.ajax({
                 type: "get",
@@ -241,7 +241,7 @@
         function plus_score() {
             score += 1
             localStorage.setItem('stack_score', JSON.stringify(score))
-            JSON.parse(localStorage.getItem('stack_score'))
+            // JSON.parse(localStorage.getItem('stack_score'))
         }
     </script>
 </head>

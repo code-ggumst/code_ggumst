@@ -26,11 +26,9 @@
     <link rel="stylesheet" href="../static/style2.css">
     <!--<link rel="" href="/static/img/">-->
 
-
-    <!--첫페이지이동-->
     <script type="text/javascript">
+        //// 다시하기 ////
         function start() {
-
             $.ajax({
                 type: "get",
                 url: "/start",
@@ -40,68 +38,38 @@
                 }
             })
         }
+
+        //// 성적 보여주기 ////
+        $(function result_score() {
+            let temp_html = `<span class="all_stack">${localStorage.getItem('stack_score') +" / 15"}</span>`
+            $('#stack').append(temp_html)
+        })
     </script>
-
-
-    <script>
-
-
-        var final_score;
-
-
-        $().ready(final());
-
-
-        function final() {
-
-            final_score = parseFloat(localStorage.getItem('stack_score'))
-
-        }
-
-
-
-    </script>
-
-
-
 </head>
-
-
 <body>
-
-
-        <!--main layout-->
-        <div class="container">
-
-            <!--메인 페이지-->
-            <div class="result_frame">
-                <div id="origin_result" class="origin_result">
-                    <!--결과 표시-->
-                    <p class="quiz_title">결과 공개</p>
-
-                    <!--결과 맞힌 개수-->
-                    <div class="content">
-                        <span class="all_stack" id="stack">11</span>
-                        <span>/</span>
-                        <span>15</span>
-
-                        <!--가운데 이미지-->
-                        <div class="main_img">
-                            <img id="question_img" src="/static/img/adult.png">
-                        </div>
-
-                        <!--멘트-->
-                        <p style="margin:20px">어디가서 똑똑하다는 소리 좀 들어보셨군요!</p>
+    <!--main layout-->
+    <div class="container">
+        <!--메인 페이지-->
+        <div class="result_frame">
+            <div id="origin_result" class="origin_result">
+                <!--결과 표시-->
+                <p class="quiz_title">결과 공개</p>
+                <!--결과 맞힌 개수-->
+                <div class="content">
+                    <span class="all_stack" id="stack"></span>
+                    <!--가운데 이미지-->
+                    <div class="main_img">
+                        <img id="question_img" src="/static/img/adult.png">
                     </div>
-
-                </div>
-
-                <!--다시하기 버튼-->
-                <div style="margin:80px" onclick="start()" class="restart_button">
-                    <button type="button" class="btn btn-warning">다시하기</button>
+                    <!--멘트-->
+                    <p style="margin:20px">어디가서 똑똑하다는 소리 좀 들어보셨군요!</p>
                 </div>
             </div>
+            <!--다시하기 버튼-->
+            <div style="margin:80px" onclick="start()" class="restart_button">
+                <button type="button" class="btn btn-warning">다시하기</button>
+            </div>
         </div>
-
+    </div>
 </body>
 </html>
