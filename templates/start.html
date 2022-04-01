@@ -59,7 +59,7 @@
         var answer3
         var answer4
 
-        var i = 0;// 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음.
+        var i = 0;     // 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음.
         var score = 0; //누적점수를 담을 변수 생성
 
         function quiz_start() {
@@ -230,11 +230,6 @@
 
 
 
-<script>
-    localStorage.setItem('myCat', 'Tom');
-    const cat = localStorage.getItem('myCat');
-    console.log(cat)
-</script>
 
 
 
@@ -263,24 +258,27 @@
             })
         }
 
-        <!--누적점수-->
+        <!--누적점수로컬에 저장시키기-->
         function plus_score(){
             score += 1
-            if (a==16){
-                $.ajax({
-                type: "post",
-                url: "/score",
-                data: {score_post:score},
-                success: function (response) {
-                     let a = response["msg"]
-                    console.log(a)
-                }
-            })
-            }
+            localStorage.setItem('stack_score', JSON.stringify(score))
+            JSON.parse(localStorage.getItem('stack_score'))
+
+            // if (a==16){
+            //     $.ajax({
+            //     type: "post",
+            //     url: "/score",
+            //     data: {score_post:score},
+            //     success: function (response) {
+            //          let a = response["msg"]
+            //         console.log(a)
+            //     }
+            // })
+            // }
         }
 
-
     </script>
+
 
 
 
