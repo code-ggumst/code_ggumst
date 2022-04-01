@@ -42,22 +42,22 @@
                 }
             })
         }
-
+      
         //// 퀴즈 불러오기 ////
         $().ready(quiz_start())
-
+      
         var question
         var answer1
         var answer2
         var answer3
         var answer4
-        var i = 0; i < 16; // 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음
+        var score = 0; // 누적점수를 담을 변수 생성
+        var i = 0; i < 16; // 전역변수를 설정해줌으로 클릭시=quiz_stat()실행할때 마다 i값을 차례대로 뽑음
 
         function quiz_start() {
             $('#main_page').empty()
             $('#main_page').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing'); // 슬라이드업(보이지않음) > 딜레이 > 슬라이드다운
             i++;
-
             $.ajax({
                 type: "GET",
                 url: "/quiz",
@@ -69,7 +69,7 @@
                     answer2 = all_quiz[i]['answer2']
                     answer3 = all_quiz[i]['answer3']
                     answer4 = all_quiz[i]['answer4']
-
+                  
                     let test = `<div class="question">
                                     <h2>${question}</h2>
                                 </div>
@@ -79,7 +79,6 @@
                                     <div><button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button></div>
                                     <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
                                 </div>`
-
                     $('#main_page').append(test)
 
                     //// 정답 무작위 배열 ////
@@ -94,14 +93,14 @@
                 }
             })
         }
-
+      
         //// 정오답 체크하기 ////
         // 첫번째 버튼
         function check1() {
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click: answer1},
+                data: {answer_click:answer1},
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
@@ -130,7 +129,7 @@
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click: answer2},
+                data: {answer_click:answer2},
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
@@ -149,9 +148,7 @@
                             timer: 1500,
                             showConfirmButton: false
                         });
-
                     }
-
                 }
             })
         }
@@ -161,7 +158,7 @@
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click: answer3},
+                data: {answer_click:answer3},
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
@@ -190,7 +187,7 @@
             $.ajax({
                 type: "POST",
                 url: "/check",
-                data: {answer_click: answer4},
+                data: {answer_click:answer4},
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
@@ -213,7 +210,7 @@
                 }
             })
         }
-
+      
         //// 문제 진행도 ////
         function count() {
             setTimeout(() => document.querySelector("#result").innerText = i + 1, 2200)
@@ -230,34 +227,37 @@
                 url: "/result",
                 data: {},
                 success: function (response) {
-                    window.location.href = '/result';
+                    window.location.href='/result'
                 }
             })
+        }
+
+        //// 누적점수로컬에 저장시키기 ////
+        function plus_score(){
+            score += 1
+            localStorage.setItem('stack_score', JSON.stringify(score))
+            JSON.parse(localStorage.getItem('stack_score'))
         }
     </script>
 </head>
 <body>
 <!--main layout-->
-<div class="container">
-
-    <!--퀴즈 헤드라인-->
-    <div class="quiz_head">
-        <span class="head">Quiz</span>
-        <span class="head" id="result">1</span>
-        <span class="head">/&nbsp; &nbsp; 15</span>
-    </div>
-
-    <!--main_page-->
-    <div id="main_page" class="main_page">
-
-        <!--문제 출제-->
-        <div class="question"></div>
-    </div>
-
-    <!--restart-->
-    <div onclick="start()" class="start_button">
-        <button type="button" class="btn btn-warning">다시 시작하기</button>
-    </div>
-</div>
+  <div class="container">
+      <!--퀴즈 헤드라인-->
+      <div class="quiz_head">
+          <span class="head">Quiz</span>
+          <span class="head" id="result">1</span>
+          <span class="head">/&nbsp; &nbsp; 15</span>
+      </div>
+          <!--main_page-->
+          <div id="main_page" class="main_page">
+          <!--문제 출제-->
+          <div class="question"></div>
+      </div>
+      <!--restart-->
+      <div onclick="start()" class="start_button">
+          <button type="button" class="btn btn-warning">다시 시작하기</button>
+      </div>
+  </div>
 </body>
 </html>
