@@ -51,11 +51,11 @@
         var answer2
         var answer3
         var answer4
-        var i = 0; // 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음
+        var i = 0; i < 16; // 전역변수를 설정해줌으로 클릭시=quiz_stat()실행 할때 마다 i값을 차례대로 뽑음
 
         function quiz_start() {
             $('#main_page').empty()
-            $('#main_page').slideUp(100, 'swing').delay(1800).slideDown(100, 'swing'); // 슬라이드업(보이지않음) > 시간 지연 > 슬라이드다운
+            $('#main_page').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing'); // 슬라이드업(보이지않음) > 딜레이 > 슬라이드다운
             i++;
 
             $.ajax({
@@ -84,13 +84,14 @@
 
                     //// 정답 무작위 배열 ////
                     $(document).ready(function () {
-                        var button_position = $(".q")
-                        for (var i = 0; i < button_position.length; i++) {
-                            var x = Math.floor(Math.random() * 5)
-                            var y = Math.floor(Math.random() * 5)
-                            button_position.eq(x).before(button_position.eq(y))
+                            var button_position = $(".q")
+                            for (var a = 0; a < button_position.length; a++) {
+                                var x = Math.floor(Math.random() * 5)
+                                var y = Math.floor(Math.random() * 5)
+                                button_position.eq(x).before(button_position.eq(y))
+                            }
                         }
-                    })
+                    )
                 }
             })
         }
@@ -104,8 +105,7 @@
                 data: {answer_click: answer1},
                 success: function (response) {
                     let text = response["msg"]
-                    let tt = 1;
-                    if (text === tt) {
+                    if (text == 1) {
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -121,12 +121,11 @@
                             timer: 1500,
                             showConfirmButton: false
                         });
-
                     }
-
                 }
             })
         }
+
         // 두번째 버튼
         function check2() {
             $.ajax({
@@ -135,8 +134,7 @@
                 data: {answer_click: answer2},
                 success: function (response) {
                     let text = response["msg"]
-                    let tt = 1;
-                    if (text === tt) {
+                    if (text == 1) {
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -158,6 +156,7 @@
                 }
             })
         }
+
         // 세번째 버튼
         function check3() {
             $.ajax({
@@ -166,8 +165,7 @@
                 data: {answer_click: answer3},
                 success: function (response) {
                     let text = response["msg"]
-                    let tt = 1;
-                    if (text === tt) {
+                    if (text == 1) {
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -183,12 +181,11 @@
                             timer: 1500,
                             showConfirmButton: false
                         });
-
                     }
-
                 }
             })
         }
+
         // 네번째 버튼
         function check4() {
             $.ajax({
@@ -197,8 +194,7 @@
                 data: {answer_click: answer4},
                 success: function (response) {
                     let text = response["msg"]
-                    let tt = 1;
-                    if (text === tt) {
+                    if (text == 1) {
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -214,24 +210,21 @@
                             timer: 1500,
                             showConfirmButton: false
                         });
-
                     }
-
                 }
             })
         }
 
         //// 문제 진행도 ////
-        let a = 1;
         function count() {
-            a += 1;
-            document.querySelector("#result").innerText = a;
-            if (a == 16) {
-                setTimeout(() => resultpage(), 1800)
+            setTimeout(() => document.querySelector("#result").innerText = i + 1, 2200)
+            console.log(document.querySelector("#result").innerText)
+            if (i == 15) {
+                setTimeout(() => resultpage(), 1500)
             }
         }
 
-        //// 결과 페이지 이동 ////
+        // 결과 페이지 이동 ////
         function resultpage() {
             $.ajax({
                 type: "get",
@@ -245,27 +238,27 @@
     </script>
 </head>
 <body>
-    <!--main layout-->
-    <div class="container">
+<!--main layout-->
+<div class="container">
 
-        <!--퀴즈 헤드라인-->
-        <div class="quiz_head">
-            <span class="head">Quiz</span>
-            <span class="head" id="result">1</span>
-            <span class="head">/&nbsp; &nbsp; 15</span>
-        </div>
-
-        <!--main_page-->
-        <div id="main_page" class="main_page">
-
-            <!--문제 출제-->
-            <div class="question"></div>
-        </div>
-
-        <!--restart-->
-        <div onclick="start()" class="start_button">
-            <button type="button" class="btn btn-warning">다시 시작하기</button>
-        </div>
+    <!--퀴즈 헤드라인-->
+    <div class="quiz_head">
+        <span class="head">Quiz</span>
+        <span class="head" id="result">1</span>
+        <span class="head">/&nbsp; &nbsp; 15</span>
     </div>
+
+    <!--main_page-->
+    <div id="main_page" class="main_page">
+
+        <!--문제 출제-->
+        <div class="question"></div>
+    </div>
+
+    <!--restart-->
+    <div onclick="start()" class="start_button">
+        <button type="button" class="btn btn-warning">다시 시작하기</button>
+    </div>
+</div>
 </body>
 </html>
