@@ -51,12 +51,15 @@
         var answer2
         var answer3
         var answer4
-        var score = 0; // 누적점수를 담을 변수 생성
-        var i = 0; i < 16; // 전역변수를 설정해줌으로 클릭시=quiz_stat()실행할때 마다 i값을 차례대로 뽑음
+        var score = 0; // 누적점수를 담을 변수
+        var i = 0; i < 16; // quiz_start() 실행시마다 i번째 퀴즈 호출
+        var a = 1;  // 퀴즈 진행도 변수 count() 실행시마다 += 1
 
         function quiz_start() {
             $('#main_page').empty()
             $('#main_page').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing'); // 슬라이드업(보이지않음) > 딜레이 > 슬라이드다운
+            $('#quiz_progress').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing');
+            $('#restart_button').slideUp(0, 'swing').delay(2000).slideDown(0, 'swing');
             i++;
             $.ajax({
                 type: "GET",
@@ -104,6 +107,7 @@
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -123,7 +127,6 @@
                 }
             })
         }
-
         // 두번째 버튼
         function check2() {
             $.ajax({
@@ -133,6 +136,7 @@
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -152,7 +156,6 @@
                 }
             })
         }
-
         // 세번째 버튼
         function check3() {
             $.ajax({
@@ -162,6 +165,7 @@
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -181,7 +185,6 @@
                 }
             })
         }
-
         // 네번째 버튼
         function check4() {
             $.ajax({
@@ -191,6 +194,7 @@
                 success: function (response) {
                     let text = response["msg"]
                     if (text == 1) {
+                        plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
@@ -213,15 +217,16 @@
       
         //// 문제 진행도 ////
         function count() {
-            setTimeout(() => document.querySelector("#result").innerText = i + 1, 2200)
-            console.log(document.querySelector("#result").innerText)
-            if (i == 15) {
-                setTimeout(() => resultpage(), 1500)
+            if (a < 15) {
+                a += 1,
+                    setTimeout(() => document.querySelector("#result").innerText = a, 2200)
+            } else {
+                setTimeout(() => result(), 1500)
             }
         }
 
         // 결과 페이지 이동 ////
-        function resultpage() {
+        function result() {
             $.ajax({
                 type: "get",
                 url: "/result",
@@ -232,8 +237,8 @@
             })
         }
 
-        //// 누적점수로컬에 저장시키기 ////
-        function plus_score(){
+        //// 누적점수 로컬에 저장시키기 ////
+        function plus_score() {
             score += 1
             localStorage.setItem('stack_score', JSON.stringify(score))
             JSON.parse(localStorage.getItem('stack_score'))
@@ -242,9 +247,9 @@
 </head>
 <body>
 <!--main layout-->
-  <div class="container">
+  <div class="container" id="111">
       <!--퀴즈 헤드라인-->
-      <div class="quiz_head">
+      <div class="quiz_head" id="quiz_progress">
           <span class="head">Quiz</span>
           <span class="head" id="result">1</span>
           <span class="head">/&nbsp; &nbsp; 15</span>
@@ -256,7 +261,7 @@
       </div>
       <!--restart-->
       <div onclick="start()" class="start_button">
-          <button type="button" class="btn btn-warning">다시 시작하기</button>
+          <button type="button" class="btn btn-warning" id="restart_button">다시 시작하기</button>
       </div>
   </div>
 </body>
