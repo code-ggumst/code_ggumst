@@ -58,7 +58,7 @@ body {
   background-image: url(/static/img/main_char1.png);
 }
 
-.main_img:hover{
+.main_img:hover {
   background-image: url(/static/img/main_char2.png);
   /*transform: scale(2) rotate(360deg);*/
 }

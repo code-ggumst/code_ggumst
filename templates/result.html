@@ -45,28 +45,22 @@
             }
         </script>
     </head>
+    <!--
     <body>
-        <!--main layout-->
         <div class="wrapper">
-            <!--메인 페이지-->
             <div class="result_frame">
                 <div id="origin_result" class="origin_result">
-                    <!--결과 표시-->
                     <p class="quiz_title">결과 공개</p>
-                    <!--결과 맞힌 개수-->
                     <div class="content">
                         <span name="stack" class="all_stack" id="stack">11</span>
                         <span>/</span>
                         <span>15</span>
-                        <!--가운데 이미지-->
                         <div id="img" class="main_img">
                             <img id="result_img" style="width:400px; height:350px" src="">
                         </div>
-                        <!--멘트-->
                         <p id="text" style="margin:20px">어디가서 똑똑하다는 소리 좀 들어보셨군요!</p>
                     </div>
                 </div>
-                <!--다시하기 버튼-->
                 <div onclick="start()" class="restart_button">
                     <button type="button" class="btn btn-warning">다시하기</button>
                     <a id="kakao-link-btn" href="javascript:;">
@@ -78,6 +72,39 @@
             </div>
         </div>
     </body>
+    -->
+    <body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>결과 공개</h1>
+        </div>
+        <div class="content">
+            <div class="score_screen">
+                <span name="stack" class="all_stack" id="stack">11</span>
+                <span>/</span>
+                <span>15</span>
+            </div>
+            <div id="img" class="main_img">
+                <img id="result_img" src="">
+            </div>
+            <div class="result_message">
+                <p id="text">어디가서 똑똑하다는 소리 좀 들어보셨군요!</p>
+            </div>
+        </div>
+        <div class="footer">
+            <div onclick="start()" class="restart_button">
+                <button type="button" class="btn btn-warning">다시하기</button>
+            </div>
+            <div class="kakao_share">
+                <a class="kakao-link-btn" href="javascript:;">
+                    <img class="kakao_icon" src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오링크 보내기 버튼">
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
         <script>
             var final_score;
             final_score = parseFloat(localStorage.getItem('stack_score'))

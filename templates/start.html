@@ -79,10 +79,10 @@
                                         <h1>${question}</h1>
                                     </div>
                                         <div class="quiz_button">
-                                        <div><button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button></div>
-                                        <div><button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button></div>
-                                        <div><button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button></div>
-                                        <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
+                                            <button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button>
+                                            <button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button>
+                                            <button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button>
+                                            <button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button>
                                     </div>`
                         $('#main_page').append(test)
 
@@ -254,10 +254,11 @@
             <div class="header">
                 <span class="head">Quiz</span>
                 <span class="head" id="result">1</span>
-                <span class="head">/&nbsp; &nbsp; 15</span>
+                <span class="head">/</span>
+                <span class="head">15</span>
             </div>
             <div id="main_page" class="main_page">
-                <div class="question"></div>
+                <!--<div class="question"></div>-->
             </div>
             <div class="footer">
                 <div onclick="start()" class="start_button">

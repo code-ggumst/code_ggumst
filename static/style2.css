@@ -25,22 +25,77 @@ body {
     box-shadow: 20px 20px 20px gray;
 }
 
-.result_frame{
-        width: 550px;
-        height: 500px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+.header {
+    margin: 30px 0 20px 0;
+    height: auto;
+    text-align: center;
+    padding: 30px 0;
+    font-family: 'Jua', sans-serif;
+}
+
+.header h1{
+    font-size: 50px;
 }
 
 .content {
-    font-size: 25px;
+    text-align: center;
+    font-size: 30px;
     font-family: 'Jua', sans-serif;
 }
-.quiz_title{
-    font-size: 25px;
-    font-family: 'Jua', sans-serif;
 
+.score_screen {
+    padding-bottom: 20px;
+    font-size: 35px;
 }
+
+#stack {
+    color: orangered;
+}
+
+.main_img {
+    padding: 20px;
+}
+
+#result_img {
+    width: 400px;
+    height: 350px;
+    border: 8px solid white;
+}
+
+.result_message {
+    margin: 20px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.restart_button {
+    margin: 10px auto;
+    font-family: 'Jua', sans-serif;
+}
+
+.btn-warning {
+    width: 130px;
+    font-size: 20px;
+    -webkit-transform: scale(1);
+}
+
+.btn-warning:hover {
+    -webkit-transform: scale(1.2);
+}
+
+.kakao_share {
+    margin: 20px;
+}
+
+.kakao_icon {
+    width: 70px;
+    -webkit-transform: scale(1);
+}
+
+.kakao_icon:hover {
+    -webkit-transform: scale(1.2);
+}
+
