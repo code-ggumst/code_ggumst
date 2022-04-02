@@ -25,9 +25,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../static/style2.css">
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js">    </script>
     <!--<link rel="" href="/static/img/">-->
 
     <script type="text/javascript">
+        //// 카카오 API 자바스크립트 키 ////
+        Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
+
         //// 다시하기 ////
         function start() {
 
@@ -41,17 +45,36 @@
             })
         }
 
+        //// 성적 보여주기 ////
+        $(function result_score() {
+            let temp_score = `<span class="all_stack" id="stack">${localStorage.getItem('stack_score') +" / 15"}</span>`
+            $('#stack').append(temp_score)
+        })
+
+        $(function result_image() {
+            if (localStorage.getItem('stack_score') <= 5) {
+                let temp_image1 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">1레벨 메세지</p>`
+                $('#level_text').append(temp_image1)
+            } else if ((localStorage.getItem('stack_score') <= 10)) {
+                let temp_image2 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">2레벨 메세지</p>`
+                $('#level_text').append(temp_image2)
+            } else if ((localStorage.getItem('stack_score') <= 14)) {
+                let temp_image3 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">3레벨 메세지</p>`
+                $('#level_text').append(temp_image3)
+            } else {
+                let temp_image4 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">4레벨 메세지</p>`
+                $('#level_text').append(temp_image4)
+            }
+        })
     </script>
-
-
-
-
 </head>
 
 
 <body>
-
-
         <!--main layout-->
         <div class="container">
 
@@ -83,10 +106,15 @@
                     <button type="button" class="btn btn-warning">다시하기</button>
                 </div>
             </div>
+                <a id="kakao-link-btn" href="javascript:;">
+                        <img
+                                src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+                                alt="카카오링크 보내기 버튼"
+                        />
+                </a>
+            </div>
         </div>
-
 </body>
-
     <script>
             var final_score;
             final_score = parseFloat(localStorage.getItem('stack_score'))
@@ -106,6 +134,10 @@
                 document.getElementById("result_img").src="http://balkadu.com/wp-content/uploads/2017/07/400X400.jpg";
                 $("p[id=text]").text("당신은 초고수 수준입니다.");
             }
+      
+        Kakao.Link.createCustomButton({
+            container: '#kakao-link-btn',
+            templateId : 74390
+        })
     </script>
-
 </html>
