@@ -1,17 +1,29 @@
 /* 세번째 페이지 */
-
+/* 초기화 */
+body, h1 {
+    margin: 0;
+}
 
 /* main layout */
-    .container{
-        background-color: rgb(222, 234, 246);
-        width: 600px;
-        height: 700px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 40px;
-    }
+body {
+    background-image: url(/static/img/background_2.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.wrapper {
+    /*background-color: #D6E6F5;*/
+    background-color: #ddd;
+    width: 950px;
+    height: 950px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5% 95% 7% 93% / 94% 5% 95% 6%;
+    border: 10px solid white;
+    box-shadow: 20px 20px 20px gray;
+}
 
 .result_frame{
         width: 550px;
