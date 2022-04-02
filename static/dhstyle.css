@@ -1,45 +1,86 @@
+/* 초기화 */
+body, h1 {
+    margin: 0;
+}
+
 /* main layout */
-.container{
-    background-color: #D6E6F5;
-    width: 600px;
-    height: 700px;
+body {
+    background-image: url(/static/img/background_2.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.wrapper {
+    /*background-color: #D6E6F5;*/
+    background-color: #ddd;
+    width: 950px;
+    height: 950px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 40px;
+    border-radius: 5% 95% 7% 93% / 94% 5% 95% 6%;
+    border: 10px solid white;
+    box-shadow: 20px 20px 20px gray;
 }
 
-.main_page{
-    width: 550px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.header {
+    height: auto;
     text-align: center;
+    padding: 40px 0;
 }
 
-.main_page .quiz_title{
-    font-size: 50px;
+.header h1 {
+    font-size: 90px;
     font-family: 'Jua', sans-serif;
 }
 
-.content{
+.contents {
+    padding: 20px;
+}
+
+.section {
+    text-align: center;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-.content p:nth-child(1){
+.message {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.main_img {
+  width:400px;
+  height:400px;
+  margin: 0 auto;
+  text-align: center;
+  transition: all 0.4s;
+  background-image: url(/static/img/main_char1.png);
+}
+
+.main_img:hover{
+  background-image: url(/static/img/main_char2.png);
+  /*transform: scale(2) rotate(360deg);*/
+}
+
+.info {
+    font-size: 30px;
+    padding: 20px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+}
+.start_button {
+    margin: 0 auto;
+    font-family: 'Jua', sans-serif;
+}
+.btn-warning {
+    width: 200px;
     font-size: 25px;
 }
 
-.content p:nth-child(3){
-    font-size: 20px;
-}
-
-#question_img {
-    width: 350px;
-}
-
-.start_button {
-    font-family: 'Jua', sans-serif;
+.btn-warning:hover {
+    background-color: darkorange;
 }
