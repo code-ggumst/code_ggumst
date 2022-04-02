@@ -24,9 +24,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/style2.css">
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js">    </script>
     <!--<link rel="" href="/static/img/">-->
 
     <script type="text/javascript">
+        //// 카카오 API 자바스크립트 키 ////
+        Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
+
         //// 다시하기 ////
         function start() {
             $.ajax({
@@ -41,8 +45,28 @@
 
         //// 성적 보여주기 ////
         $(function result_score() {
-            let temp_html = `<span class="all_stack">${localStorage.getItem('stack_score') +" / 15"}</span>`
-            $('#stack').append(temp_html)
+            let temp_score = `<span class="all_stack" id="stack">${localStorage.getItem('stack_score') +" / 15"}</span>`
+            $('#stack').append(temp_score)
+        })
+
+        $(function result_image() {
+            if (localStorage.getItem('stack_score') <= 5) {
+                let temp_image1 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">1레벨 메세지</p>`
+                $('#level_text').append(temp_image1)
+            } else if ((localStorage.getItem('stack_score') <= 10)) {
+                let temp_image2 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">2레벨 메세지</p>`
+                $('#level_text').append(temp_image2)
+            } else if ((localStorage.getItem('stack_score') <= 14)) {
+                let temp_image3 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">3레벨 메세지</p>`
+                $('#level_text').append(temp_image3)
+            } else {
+                let temp_image4 = `<div><img style="width:100px; height:100px" src="/static/img/baby.png"></div>
+                                   <p id="result_text" style="margin:20px">4레벨 메세지</p>`
+                $('#level_text').append(temp_image4)
+            }
         })
     </script>
 </head>
@@ -55,21 +79,30 @@
                 <!--결과 표시-->
                 <p class="quiz_title">결과 공개</p>
                 <!--결과 맞힌 개수-->
-                <div class="content">
+                <div class="content" id="content">
                     <span class="all_stack" id="stack"></span>
-                    <!--가운데 이미지-->
-                    <div class="main_img">
-                        <img id="question_img" src="/static/img/adult.png">
-                    </div>
                     <!--멘트-->
-                    <p style="margin:20px">어디가서 똑똑하다는 소리 좀 들어보셨군요!</p>
+                    <p style="margin:20px" id="level_text"></p>
                 </div>
             </div>
             <!--다시하기 버튼-->
             <div style="margin:80px" onclick="start()" class="restart_button">
                 <button type="button" class="btn btn-warning">다시하기</button>
             </div>
+                <a id="kakao-link-btn" href="javascript:;">
+                        <img
+                                src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+                                alt="카카오링크 보내기 버튼"
+                        />
+                </a>
+            </div>
         </div>
     </div>
 </body>
+    <script type="text/javascript">
+        Kakao.Link.createCustomButton({
+            container: '#kakao-link-btn',
+            templateId : 74390
+        })
+    </script>
 </html>
