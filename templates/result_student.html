@@ -20,17 +20,16 @@
         crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
-    <title>상식 퀴즈</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <title>결과 페이지</title>
 
-    <link rel="stylesheet" href="../static/dhstyle.css">
-    <link rel="short icon" href="/static/img/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../4월2일%20백업/static/style2.css">
+    <!--<link rel="" href="/static/img/">-->
 
     <script type="text/javascript">
-        //// 퀴즈 시작하기 ////
+
         function start() {
+
             $.ajax({
                 type: "get",
                 url: "/start",
@@ -40,29 +39,55 @@
                 }
             })
         }
+
     </script>
 
+    <script>
+        let count_receive = localStorage.getItem("score");
+
+        if(count_receive <= 6){
+        console.log("초보")}
+        else if(count_receive <= 11){
+        console.log("중수")}
+        else if(count_receive <= 14){
+        console.log("고수")}
+        else{
+        console.log("초고수")}
+
+    </script>
 </head>
 
 
-
-
 <body>
+
+    <!--main layout-->
     <div class="container">
-        <div class="main_page">
-            <p class="quiz_title">상식 QUIZ</p>
+
+        <!--메인 페이지-->
+        <div class="result_frame">
+
+            <!--결과 표시-->
+            <p class="quiz_title">결과 공개</p>
+
+            <!--결과 맞힌 개수-->
             <div class="content">
-                <p>여러분이 알고 있는 상식!</br>
-                어디까지 알고 계신가요?</p>
+                <span id="stack"> 0 </span>
+                <span> / </span>
+                <span> 15 </span>
+
+                <!--가운데 이미지-->
                 <div class="main_img">
-                    <img id="question_img" src="/static/img/main.png">
+                    <img id="question_img" src="/static/img/student.png">
                 </div>
-                <p>퀴즈를 맞춰서</br>본인의 상식 수준을 확인하세요!</p>
+
+                <!--멘트-->
+                <p style="margin:20px" >공부 좀 꽤나 하셨군요?!</p>
             </div>
 
-            <!--시작버튼-->
-            <div onclick="start()" class="start_button">
-                <button type="button" class="btn btn-warning">시작하기</button>
+
+            <!--다시하기 버튼-->
+            <div style="margin:80px" onclick="start()" class="restart_button">
+                <button type="button" class="btn btn-warning">다시하기</button>
             </div>
         </div>
     </div>

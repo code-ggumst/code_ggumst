@@ -23,6 +23,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+
     <title>두번째 페이지</title>
 
     <link rel="stylesheet" href="/static/style.css" type="text/css">
@@ -30,9 +31,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
+
     <script type="text/javascript">
         //// 퀴즈 다시하기 ////
         function start() {
+
             $.ajax({
                 type: "get",
                 url: "/start",
@@ -42,15 +45,23 @@
                 }
             })
         }
-      
-        //// 퀴즈 불러오기 ////
-        $().ready(quiz_start())
-      
+
+    </script>
+
+
+
+
+    <script>
+
+        $().ready(quiz_start()) //페이지 로딩하자마자 바로 quiz_start()를 실행!
+
+
         var question
         var answer1
         var answer2
         var answer3
         var answer4
+
         var score = 0; // 누적점수를 담을 변수
         var i = 0; i < 16; // quiz_start() 실행시마다 i번째 퀴즈 호출
         var a = 1;  // 퀴즈 진행도 변수 count() 실행시마다 += 1
@@ -60,6 +71,7 @@
             $('#main_page').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing'); // 슬라이드업(보이지않음) > 딜레이 > 슬라이드다운
             $('#quiz_progress').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing');
             $('#restart_button').slideUp(0, 'swing').delay(2000).slideDown(0, 'swing');
+
             i++;
             $.ajax({
                 type: "GET",
@@ -72,15 +84,18 @@
                     answer2 = all_quiz[i]['answer2']
                     answer3 = all_quiz[i]['answer3']
                     answer4 = all_quiz[i]['answer4']
-                  
+
                     let test = `<div class="question">
                                     <h2>${question}</h2>
                                 </div>
                                     <div class="quiz_button">
+
                                     <div><button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button></div>
                                     <div><button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button></div>
                                     <div><button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button></div>
                                     <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
+
+
                                 </div>`
                     $('#main_page').append(test)
 
@@ -100,17 +115,21 @@
         //// 정오답 체크하기 ////
         // 첫번째 버튼
         function check1() {
+
             $.ajax({
                 type: "POST",
                 url: "/check",
                 data: {answer_click:answer1},
                 success: function (response) {
                     let text = response["msg"]
+
                     if (text == 1) {
+
                         plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
+
                             timerProgressBar: true,
                             timer: 1500,
                             showConfirmButton: false
@@ -129,18 +148,22 @@
         }
         // 두번째 버튼
         function check2() {
+
             $.ajax({
                 type: "POST",
                 url: "/check",
                 data: {answer_click:answer2},
                 success: function (response) {
                     let text = response["msg"]
+
                     if (text == 1) {
                         plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
+
                             timerProgressBar: true,
+
                             timer: 1500,
                             showConfirmButton: false
                         });
@@ -148,6 +171,7 @@
                         Swal.fire({
                             icon: 'warning',
                             title: "오답입니다.",
+
                             timerProgressBar: true,
                             timer: 1500,
                             showConfirmButton: false
@@ -158,18 +182,23 @@
         }
         // 세번째 버튼
         function check3() {
+
             $.ajax({
                 type: "POST",
                 url: "/check",
                 data: {answer_click:answer3},
                 success: function (response) {
                     let text = response["msg"]
+
                     if (text == 1) {
+
                         plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
+
                             timerProgressBar: true,
+
                             timer: 1500,
                             showConfirmButton: false
                         });
@@ -177,6 +206,7 @@
                         Swal.fire({
                             icon: 'warning',
                             title: "오답입니다.",
+
                             timerProgressBar: true,
                             timer: 1500,
                             showConfirmButton: false
@@ -187,18 +217,23 @@
         }
         // 네번째 버튼
         function check4() {
+
             $.ajax({
                 type: "POST",
                 url: "/check",
                 data: {answer_click:answer4},
                 success: function (response) {
                     let text = response["msg"]
+
                     if (text == 1) {
+
                         plus_score();
                         Swal.fire({
                             icon: 'success',
                             title: "정답입니다.",
+
                             timerProgressBar: true,
+
                             timer: 1500,
                             showConfirmButton: false
                         });
@@ -206,6 +241,7 @@
                         Swal.fire({
                             icon: 'warning',
                             title: "오답입니다.",
+
                             timerProgressBar: true,
                             timer: 1500,
                             showConfirmButton: false
@@ -226,6 +262,7 @@
         }
 
         //// 결과 페이지 이동 ////
+
         function result() {
             $.ajax({
                 type: "get",
@@ -237,6 +274,7 @@
             })
         }
 
+
         //// 누적점수 로컬에 저장시키기 ////
         function plus_score() {
             score += 1
@@ -244,8 +282,12 @@
             // JSON.parse(localStorage.getItem('stack_score'))
         }
     </script>
+
 </head>
+
+
 <body>
+
 <!--main layout-->
   <div class="container" id="111">
       <!--퀴즈 헤드라인-->
@@ -264,5 +306,7 @@
           <button type="button" class="btn btn-warning" id="restart_button">다시 시작하기</button>
       </div>
   </div>
+
 </body>
+
 </html>

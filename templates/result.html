@@ -23,6 +23,7 @@
     <title>결과 페이지</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../static/style2.css">
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js">    </script>
     <!--<link rel="" href="/static/img/">-->
@@ -33,6 +34,7 @@
 
         //// 다시하기 ////
         function start() {
+
             $.ajax({
                 type: "get",
                 url: "/start",
@@ -70,24 +72,39 @@
         })
     </script>
 </head>
+
+
 <body>
-    <!--main layout-->
-    <div class="container">
-        <!--메인 페이지-->
-        <div class="result_frame">
-            <div id="origin_result" class="origin_result">
-                <!--결과 표시-->
-                <p class="quiz_title">결과 공개</p>
-                <!--결과 맞힌 개수-->
-                <div class="content" id="content">
-                    <span class="all_stack" id="stack"></span>
-                    <!--멘트-->
-                    <p style="margin:20px" id="level_text"></p>
+        <!--main layout-->
+        <div class="container">
+
+            <!--메인 페이지-->
+            <div class="result_frame">
+                <div id="origin_result" class="origin_result">
+                    <!--결과 표시-->
+                    <p class="quiz_title">결과 공개</p>
+
+                    <!--결과 맞힌 개수-->
+                    <div class="content">
+                        <span name="stack" class="all_stack" id="stack">11</span>
+                        <span>/</span>
+                        <span>15</span>
+
+                        <!--가운데 이미지-->
+                        <div id="img" class="main_img">
+                            <img id="result_img" style="width:400px; height:350px" src="">
+                        </div>
+
+                        <!--멘트-->
+                        <p id="text" style="margin:20px">어디가서 똑똑하다는 소리 좀 들어보셨군요!</p>
+                    </div>
+
                 </div>
-            </div>
-            <!--다시하기 버튼-->
-            <div style="margin:80px" onclick="start()" class="restart_button">
-                <button type="button" class="btn btn-warning">다시하기</button>
+
+                <!--다시하기 버튼-->
+                <div onclick="start()" class="restart_button">
+                    <button type="button" class="btn btn-warning">다시하기</button>
+                </div>
             </div>
                 <a id="kakao-link-btn" href="javascript:;">
                         <img
@@ -97,9 +114,27 @@
                 </a>
             </div>
         </div>
-    </div>
 </body>
-    <script type="text/javascript">
+    <script>
+            var final_score;
+            final_score = parseFloat(localStorage.getItem('stack_score'))
+            $("span[name=stack]").text(final_score);
+
+
+            if (final_score <= 6) {
+                document.getElementById("result_img").src="https://i.pinimg.com/originals/07/00/93/070093a9b4079db273b5a3eb0f06d544.png";
+                $("p[id=text]").text("당신은 초보수준입니다.");
+            } else if (final_score <= 11) {
+                document.getElementById("result_img").src="/static/img/adult.png"
+                $("p[id=text]").text("당신은 중수수준입니다.");
+            } else if (final_score <= 14) {
+                document.getElementById("result_img").src="https://gradle.org/images/gradle-400x400.png";
+                $("p[id=text]").text("당신은 고수수준입니다.");
+            } else {
+                document.getElementById("result_img").src="http://balkadu.com/wp-content/uploads/2017/07/400X400.jpg";
+                $("p[id=text]").text("당신은 초고수 수준입니다.");
+            }
+      
         Kakao.Link.createCustomButton({
             container: '#kakao-link-btn',
             templateId : 74390
