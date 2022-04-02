@@ -14,7 +14,7 @@ def main():
     return render_template('main.html')
 
 
-# 퀴즈 시작하기, 다시하기
+# 퀴즈 시작하기
 @app.route('/start')
 def start():
     return render_template('start.html')
