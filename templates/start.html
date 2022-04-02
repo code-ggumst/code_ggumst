@@ -53,14 +53,12 @@
             var score = 0; // 누적점수를 담을 변수
             var i = 0;
             i < 16; // quiz_start() 실행시마다 i번째 퀴즈 호출
-            var a = 1;  // 퀴즈 진행도 변수 count() 실행시마다 += 1
 
             function quiz_start() {
                 $('#question').empty()
                 $('#quiz_button').empty()
                 $('#question').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing'); // 슬라이드업(사라짐) > 딜레이 > 슬라이드다운(보임)
                 $('#quiz_button').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing');
-                // $('#restart_button').slideUp(0, 'swing').delay(2000).slideDown(0, 'swing');
 
                 i++;
 
@@ -76,10 +74,10 @@
                         answer3 = all_quiz[i]['answer3']
                         answer4 = all_quiz[i]['answer4']
 
-                        let question_title = `<div class="question" id="question">
+                        let question_title = `<div>
                                                 <h1>${question}</h1>
                                               </div>`
-                        let quiz_button = `<div class="quiz_button" id="quiz_buttonn">
+                        let quiz_button = `<div>
                                                <button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button>
                                                <button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button>
                                                <button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button>
@@ -221,6 +219,8 @@
             }
 
             //// 문제 진행도 ////
+            var a = 1;  // 퀴즈 진행도 변수 count() 실행시마다 += 1
+
             function count() {
                 if (a < 15) {
                     a += 1,
@@ -257,7 +257,7 @@
                 <span class="head">/</span>
                 <span class="head">15</span>
             </div>
-            <div class="main_page" id="main_page">
+            <div class="main_page">
                 <div class="question" id="question"></div>
                 <div class="quiz_button" id="quiz_button"></div>
             </div>
