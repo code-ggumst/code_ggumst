@@ -1,3 +1,4 @@
+/*dhstyle.css*/
 /* 초기화 */
 body, h1 {
     margin: 0;
@@ -10,11 +11,12 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+
 .wrapper {
     /*background-color: #D6E6F5;*/
     background-color: #ddd;
-    width: 950px;
-    height: 950px;
+    width: 650px;
+    height: 650px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,58 +29,58 @@ body {
 .header {
     height: auto;
     text-align: center;
-    padding: 40px 0;
+    padding: 30px 0 20px 0;
 }
 
 .header h1 {
-    font-size: 90px;
+    font-size: 45px;
     font-family: 'Jua', sans-serif;
 }
 
 .contents {
-    padding: 20px;
+    padding: 10px;
 }
 
 .section {
     text-align: center;
     font-family: 'Nanum Gothic', sans-serif;
+    padding-bottom: 20px;
 }
 
 .message {
-    font-size: 35px;
+    font-size: 23px;
     font-weight: bold;
 }
 
 .main_img {
-  width:400px;
-  height:400px;
-  margin: 0 auto;
-  text-align: center;
-  transition: all 0.4s;
-  background-image: url(/static/img/main_char1.png);
+    width:280px;
+    height:280px;
+    margin: 0 auto;
+    text-align: center;
+    transition: all 0.4s;
+    background-image: url(/static/img/main_char1.png);
 }
 
 .main_img:hover {
-  background-image: url(/static/img/main_char2.png);
-  /*transform: scale(2) rotate(360deg);*/
+    background-image: url(/static/img/main_char2.png);
+    /*transform: scale(2) rotate(360deg);*/
 }
 
 .info {
-    font-size: 30px;
+    font-size: 22px;
     padding: 20px;
 }
 
 .footer {
     text-align: center;
-    padding: 20px 0;
 }
 .start_button {
     margin: 0 auto;
     font-family: 'Jua', sans-serif;
 }
 .btn-warning {
-    width: 200px;
-    font-size: 25px;
+    width: 100px;
+    font-size: 20px;
 }
 
 .btn-warning:hover {

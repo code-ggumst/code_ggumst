@@ -1,6 +1,7 @@
+/*style.css*/
 /* 두번째 페이지 */
 /* 초기화 */
-body, h1 {
+body, h3 {
     margin: 0;
 }
 
@@ -11,11 +12,12 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+
 .wrapper {
     /*background-color: #D6E6F5;*/
     background-color: #ddd;
-    width: 950px;
-    height: 950px;
+    width: 650px;
+    height: 650px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -28,9 +30,9 @@ body {
 .header {
     height: auto;
     text-align: left;
-    padding: 40px 0;
-    margin-left: 60px;
-    font-size: 30px;
+    padding: 20px 0;
+    margin-left: 40px;
+    font-size: 20px;
     font-family: 'Jua', sans-serif;
 }
 
@@ -38,52 +40,54 @@ body {
     margin: 5px;
 }
 
+
 #result {
     color: salmon;
 }
 
-.contents {
-    padding: 20px;
-}
-
 .main_page {
-    width: 800px;
-    height: 600px;
+    width: 600px;
+    height: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
 /* 문제 */
 .question{
     /*margin: 50px 0px 80px 0px ;*/
-    margin-bottom: 50px;
-    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-top: 20px;
     padding-bottom: 15px;
+}
+
+.question p {
+    font-size: 30px;
 }
 
 /* 정답 버튼 툴 */
 .quiz_button{
     position: absolute;
-    width: 800px;
+    width: 600px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
-    margin-top: 50px;
-    padding-top: 100px;
+    padding-top: 150px;
+    margin: 100 auto;
+    text-align: center;
 }
 
 /* 정답버튼 */
 .q {
-    font-size: 25px;
+    font-size: 20px;
     background-color: rgb(248, 203, 172);
     border: 0px;
     border-radius: 10px;
-    margin: 20px;
-    width:  590px;
-    height: 70px;
+    margin-bottom: 25px;
+    width:  480px;
+    height: 50px;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -92,7 +96,7 @@ body {
 }
 
 .footer {
-    margin-top: 750px;
+    margin-top: 500px;
     text-align: right;
-    margin-right: 70px;
+    margin-right: 60px;
 }
