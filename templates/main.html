@@ -24,13 +24,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../4월2일%20백업/static/dhstyle.css">
+
+    <link rel="stylesheet" href="../static/dhstyle.css">
     <link rel="short icon" href="/static/img/icon.png">
 
-        <script type="text/javascript">
-
+    <script type="text/javascript">
+        //// 퀴즈 시작하기 ////
         function start() {
-
             $.ajax({
                 type: "get",
                 url: "/start",
@@ -40,7 +40,6 @@
                 }
             })
         }
-
     </script>
 
 </head>
@@ -60,6 +59,7 @@
                 </div>
                 <p>퀴즈를 맞춰서</br>본인의 상식 수준을 확인하세요!</p>
             </div>
+
             <!--시작버튼-->
             <div onclick="start()" class="start_button">
                 <button type="button" class="btn btn-warning">시작하기</button>
