@@ -29,9 +29,6 @@
         <!--<link rel="" href="/static/img/">-->
 
         <script type="text/javascript">
-            //// 카카오 API 자바스크립트 키 ////
-            Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
-
             //// 다시하기 ////
             function restart() {
                 $.ajax({
@@ -44,10 +41,12 @@
                 })
             }
 
-            //// 카카오 링크 ////
+            //// 카카오 공유하기 ////
             function kakao_link() {
-                Kakao.Link.sendCustom({templateId: 74390})
-            }
+                Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
+                Kakao.Link.sendScrap({
+                    requestUrl: 'http://3.34.140.190:5000'
+                })
         </script>
     </head>
     <body>
