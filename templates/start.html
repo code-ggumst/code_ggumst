@@ -75,7 +75,6 @@
                         answer3 = all_quiz[i]['answer3']
                         answer4 = all_quiz[i]['answer4']
                         correct_answer = all_quiz[i]['correct']
-                        console.log(correct_answer)
 
                         let question_title = `<div>
                                                 <p>${question}</p>
@@ -131,7 +130,7 @@
                                 timer: 1500,
                                 showConfirmButton: false
                             });
-                        }console.log(correct_answer);
+                        }
                     }
                 })
             }
@@ -225,6 +224,7 @@
                     }
                 })
             }
+
 
             //// 문제 진행도 ////
             var a = 1;  // 퀴즈 진행도 변수 count() 실행시마다 += 1
