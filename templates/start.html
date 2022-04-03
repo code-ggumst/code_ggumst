@@ -25,6 +25,7 @@
 
         <title>두번째 페이지</title>
 
+        <link rel="short icon" href="/static/img/icon2.png">
         <link rel="stylesheet" href="/static/style.css" type="text/css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,23 +46,22 @@
 
             $().ready(quiz_start())
 
-            var question
-            var answer1
-            var answer2
-            var answer3
-            var answer4
+            var question;
+            var answer1;
+            var answer2;
+            var answer3;
+            var answer4;
+            var correct_answer;
+
             var score = 0; // 누적점수를 담을 변수
             var i = 0;
-            i < 16; // quiz_start() 실행시마다 i번째 퀴즈 호출
 
             function quiz_start() {
                 $('#question').empty()
                 $('#quiz_button').empty()
                 $('#question').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing'); // 슬라이드업(사라짐) > 딜레이 > 슬라이드다운(보임)
                 $('#quiz_button').slideUp(0, 'swing').delay(2000).slideDown(500, 'swing');
-
                 i++;
-
                 $.ajax({
                     type: "GET",
                     url: "/quiz",
@@ -73,9 +73,11 @@
                         answer2 = all_quiz[i]['answer2']
                         answer3 = all_quiz[i]['answer3']
                         answer4 = all_quiz[i]['answer4']
+                        correct_answer = all_quiz[i]['correct']
+                        console.log(correct_answer)
 
                         let question_title = `<div>
-                                                <h1>${question}</h1>
+                                                <p>${question}</p>
                                               </div>`
                         let quiz_button = `<div>
                                                <button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button>
@@ -84,8 +86,10 @@
                                                <button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button>
                                            </div>`
 
+
                         $('#question').append(question_title)
                         $('#quiz_button').append(quiz_button)
+
 
                         //// 정답 무작위 배열 //// 완벽하지않음 (더 좋은 랜덤방식 구현 or 임의로 정답 배열 필요)
                         $(document).ready(function () {
@@ -99,8 +103,7 @@
                     }
                 })
             }
-
-            //// 정오답 체크하기 ////
+                        //// 정오답 체크하기 ////
             // 첫번째 버튼
             function check1() {
                 $.ajax({
@@ -122,11 +125,12 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
+                                text: `정답은: "${correct_answer}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
                             });
-                        }
+                        }console.log(correct_answer);
                     }
                 })
             }
@@ -142,7 +146,7 @@
                             plus_score();
                             Swal.fire({
                                 icon: 'success',
-                                title: "정답입니다.",
+                                title: "정답입니다",
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
@@ -151,6 +155,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
+                                text: `정답은: "${correct_answer}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
@@ -180,6 +185,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
+                                text: `정답은: "${correct_answer}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
@@ -209,6 +215,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
+                                text:`정답은: "${correct_answer}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
@@ -218,13 +225,14 @@
                 })
             }
 
+
             //// 문제 진행도 ////
             var a = 1;  // 퀴즈 진행도 변수 count() 실행시마다 += 1
 
             function count() {
                 if (a < 15) {
-                    a += 1,
-                        setTimeout(() => document.querySelector("#result").innerText = a, 2200)
+                    a += 1;
+                    setTimeout(() => document.querySelector("#result").innerText = a, 2200)
                 } else {
                     setTimeout(() => result(), 1500)
                 }
@@ -256,16 +264,15 @@
                 <span class="head" id="result">1</span>
                 <span class="head">/</span>
                 <span class="head">15</span>
+                <span onclick="restart()" class="regame">⟳ <a>다시하기</a></span>
             </div>
             <div class="main_page">
                 <div class="question" id="question"></div>
                 <div class="quiz_button" id="quiz_button"></div>
             </div>
-            <div class="footer">
-                <div onclick="restart()" class="start_button">
-                    <button type="button" class="btn btn-warning" id="restart_button">다시하기</button>
-                </div>
-            </div>
+
+
+
         </div>
     </body>
 </html>

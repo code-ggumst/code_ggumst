@@ -63,8 +63,9 @@ body {
     padding-bottom: 15px;
 }
 
-.question p {
-    font-size: 30px;
+/* 글자수가 많아서 사이즈 변경 */
+.question p{
+    font-size: 25px;
 }
 
 /* 정답 버튼 툴 */
@@ -85,7 +86,7 @@ body {
     border: 0px;
     border-radius: 10px;
     margin-bottom: 25px;
-    width:  480px;
+    width:  500px;
     height: 50px;
     font-family: 'Nanum Gothic', sans-serif;
 }
@@ -94,8 +95,8 @@ body {
     border: 4px solid white;
 }
 
-.footer {
-    margin-top: 500px;
-    text-align: right;
-    margin-right: 60px;
+.regame {
+    font-weight: bold;
+    margin-left: 290px;
+    cursor: pointer;
 }
