@@ -1,36 +1,102 @@
+/*style2.css*/
 /* 세번째 페이지 */
-
+/* 초기화 */
+body, h1 {
+    margin: 0;
+}
 
 /* main layout */
-    .container{
-        background-color: rgb(222, 234, 246);
-        width: 600px;
-        height: 700px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 40px;
-    }
+body {
+    background-image: url(/static/img/background_2.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-.result_frame{
-        width: 550px;
-        height: 500px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+.wrapper {
+    /*background-color: #D6E6F5;*/
+    background-color: #ddd;
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5% 95% 7% 93% / 94% 5% 95% 6%;
+    border: 10px solid white;
+    box-shadow: 20px 20px 20px gray;
+}
+
+.header {
+    margin: 20px 0 10px 0;
+    height: auto;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Jua', sans-serif;
+}
+
+.header h1{
+    font-size: 40px;
 }
 
 .content {
+    text-align: center;
     font-size: 25px;
     font-family: 'Jua', sans-serif;
 }
-.quiz_title{
-    font-size: 25px;
-    font-family: 'Jua', sans-serif;
 
+.score_screen {
+    padding-bottom: 5px;
+    font-size: 28px;
 }
 
+#stack {
+    color: orangered;
+}
 
+.main_img {
+    padding: 20px;
+}
+
+#result_img {
+    width: 250px;
+    height: 250px;
+    border: 8px solid white;
+}
+
+.result_message {
+    margin: 10px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.restart_button {
+    margin: 5px auto;
+    font-family: 'Jua', sans-serif;
+}
+
+.btn-warning {
+    width: 100px;
+    font-size: 15px;
+    -webkit-transform: scale(1);
+}
+
+.btn-warning:hover {
+    -webkit-transform: scale(1.2);
+}
+
+.kakao_share {
+    margin: 10px;
+}
+
+.kakao_icon {
+    width: 50px;
+    -webkit-transform: scale(1);
+}
+
+.kakao_icon:hover {
+    -webkit-transform: scale(1.2);
+}

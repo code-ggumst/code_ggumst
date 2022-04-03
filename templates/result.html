@@ -1,90 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
 
-    <meta charset="UTF-8">
-    <title>결과 페이지</title>
+        <meta charset="UTF-8">
+        <title>결과 페이지</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/style2.css">
-<!--    <link rel="" href="/static/img/">-->
+        <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
 
-    <script type="text/javascript">
+        <link rel="stylesheet" href="../static/style2.css">
+        <script src="https://developers.kakao.com/sdk/js/kakao.min.js">    </script>
+        <!--<link rel="" href="/static/img/">-->
 
-        function start() {
+        <script type="text/javascript">
+            //// 카카오 API 자바스크립트 키 ////
+            Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
 
-            $.ajax({
-                type: "get",
-                url: "/start",
-                data: {},
-                success: function (response) {
-                    window.location.href = '/start';
-                }
-            })
-        }
+            //// 다시하기 ////
+            function restart() {
+                $.ajax({
+                    type: "get",
+                    url: "/",
+                    data: {},
+                    success: function (response) {
+                        window.location.href = '/';
+                    }
+                })
+            }
 
-    </script>
-
-
-
-
-
-</head>
-
-
-
-
-
-<body>
-
-
-
-
-
-    <!--main layout-->
-    <div class="container">
-        <!--메인 페이지-->
-        <div class="result_frame">
-            <!--결과 표시-->
-            <p class="quiz_title">결과 공개</p>
-
-            <!--결과 맞힌 개수-->
-            <div class="content">
-                <span> 0 </span>
-                <span> / </span>
-                <span> 15 </span>
-                <!--가운데 이미지-->
-                <div class="main_img">
-                    <img id="question_img" src="/static/img/baby.png">
-                </div>
-                <!--멘트-->
-                <p style="margin:20px" >뉴스 좀 보시는게 어떠세요?ㅎㅎ</p>
+            //// 카카오 링크 ////
+            function kakao_link() {
+                Kakao.Link.sendCustom({templateId: 74390})
+            }
+        </script>
+    </head>
+    <body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>결과 공개</h1>
+        </div>
+        <div class="content">
+            <div class="score_screen">
+                <span name="stack" class="all_stack" id="stack">맞춘 정답수</span>
+                <span>/</span>
+                <span>15</span>
             </div>
-
-
-            <!--다시하기 버튼-->
-            <div style="margin:80px"onclick="start()" class="restart_button">
+            <div id="img" class="main_img">
+                <img id="result_img" src="">
+            </div>
+            <div class="result_message">
+                <p id="text">레벨별 텍스트입니다</p>
+            </div>
+        </div>
+        <div class="footer">
+            <div onclick="restart()" class="restart_button">
                 <button type="button" class="btn btn-warning">다시하기</button>
+            </div>
+            <div class="kakao_share">
+                <a class="kakao-link-btn" onclick="kakao_link()" href="javascript:;">
+                    <img class="kakao_icon"
+                         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오링크 보내기 버튼">
+                </a>
             </div>
         </div>
     </div>
+    </body>
+    <script>
+        var final_score;
+        final_score = parseFloat(localStorage.getItem('stack_score'))
+        $("span[name=stack]").text(final_score);
 
-</body>
+        if (final_score <= 6) {
+            document.getElementById("result_img").src = "https://i.pinimg.com/originals/07/00/93/070093a9b4079db273b5a3eb0f06d544.png";
+            $("p[id=text]").text("당신은 초보수준입니다.");
+        } else if (final_score <= 11) {
+            document.getElementById("result_img").src = "/static/img/adult.png"
+            $("p[id=text]").text("당신은 중수수준입니다.");
+        } else if (final_score <= 14) {
+            document.getElementById("result_img").src = "https://gradle.org/images/gradle-400x400.png";
+            $("p[id=text]").text("당신은 고수수준입니다.");
+        } else {
+            document.getElementById("result_img").src = "http://balkadu.com/wp-content/uploads/2017/07/400X400.jpg";
+            $("p[id=text]").text("당신은 초고수 수준입니다.");
+        }
+    </script>
 </html>
