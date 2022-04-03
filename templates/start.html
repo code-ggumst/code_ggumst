@@ -23,7 +23,7 @@
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        <title>두번째 페이지</title>
+        <title>상식 퀴즈</title>
 
         <link rel="short icon" href="/static/img/icon2.png">
         <link rel="stylesheet" href="/static/style.css" type="text/css">
@@ -90,7 +90,6 @@
                         $('#question').append(question_title)
                         $('#quiz_button').append(quiz_button)
 
-
                         //// 정답 무작위 배열 //// 완벽하지않음 (더 좋은 랜덤방식 구현 or 임의로 정답 배열 필요)
                         $(document).ready(function () {
                             var button_position = $(".q")
@@ -103,7 +102,8 @@
                     }
                 })
             }
-                        //// 정오답 체크하기 ////
+
+            //// 정오답 체크하기 ////
             // 첫번째 버튼
             function check1() {
                 $.ajax({
@@ -225,7 +225,6 @@
                 })
             }
 
-
             //// 문제 진행도 ////
             var a = 1;  // 퀴즈 진행도 변수 count() 실행시마다 += 1
 
@@ -270,9 +269,6 @@
                 <div class="question" id="question"></div>
                 <div class="quiz_button" id="quiz_button"></div>
             </div>
-
-
-
         </div>
     </body>
 </html>
