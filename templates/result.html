@@ -24,6 +24,7 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
 
+        <link rel="short icon" href="/static/img/icon2.png">
         <link rel="stylesheet" href="../static/style2.css">
         <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -77,16 +78,19 @@
             </div>
         </div>
         <div class="footer">
-            <div onclick="restart()" class="restart_button">
+            <span onclick="restart()" class="restart_button">
                 <button type="button" class="btn btn-warning">다시하기</button>
-            </div>
-            <div class="kakao_share">
+            </span>
+            <span class="kakao_share">
                 <a class="kakao-link-btn" onclick="kakao_link()" href="javascript:;">
-                    <img class="kakao_icon"
-                         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
-                         alt="카카오링크 보내기 버튼">
+
+                    <button type="button" class="btn btn-warning kakao_icon" alt="카카오링크 보내기 버튼"
+                    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png">공유하기</button>
+{#                    <img class="kakao_icon"#}
+{#                         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오링크 보내기 버튼">#}
+
                 </a>
-            </div>
+            </span>
         </div>
     </div>
     </body>
@@ -96,17 +100,17 @@
         $("span[name=stack]").text(final_score);
 
         if (final_score <= 6) {
-            document.getElementById("result_img").src = "https://i.pinimg.com/originals/07/00/93/070093a9b4079db273b5a3eb0f06d544.png";
-            $("p[id=text]").text("당신은 초보수준입니다.");
+            document.getElementById("result_img").src = "https://littledeep.com/wp-content/uploads/2019/05/littledeep_baby_style2.png";
+            $("p[id=text]").text("신생아 수준입니다. 뉴스 좀 보시는게 어떨까요?ㅎㅎ");
         } else if (final_score <= 11) {
-            document.getElementById("result_img").src = "/static/img/adult.png"
-            $("p[id=text]").text("당신은 중수수준입니다.");
+            document.getElementById("result_img").src = "https://cdn.pixabay.com/photo/2014/04/03/10/49/boy-311392_960_720.png"
+            $("p[id=text]").text("학창시절 공부 좀 하셨나봐요?!");
         } else if (final_score <= 14) {
-            document.getElementById("result_img").src = "https://gradle.org/images/gradle-400x400.png";
-            $("p[id=text]").text("당신은 고수수준입니다.");
+            document.getElementById("result_img").src = "https://westart.or.kr/wp-content/uploads/2016/05/AI7.png";
+            $("p[id=text]").text("지식이 풍부하시네요!!");
         } else {
-            document.getElementById("result_img").src = "http://balkadu.com/wp-content/uploads/2017/07/400X400.jpg";
-            $("p[id=text]").text("당신은 초고수 수준입니다.");
+            document.getElementById("result_img").src = "https://cdn.pixabay.com/photo/2021/02/14/18/07/result-6015355__340.png";
+            $("p[id=text]").text("대단하세요! 퀴즈대회에 참가하시는거 어떠세요?");
         }
     </script>
 </html>

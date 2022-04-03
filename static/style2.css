@@ -80,7 +80,7 @@ body {
 
 .btn-warning {
     width: 100px;
-    font-size: 15px;
+    font-size: 22px;
     -webkit-transform: scale(1);
 }
 
@@ -93,7 +93,9 @@ body {
 }
 
 .kakao_icon {
-    width: 50px;
+    width: 100px;
+    font-size:22px;
+    font-family: 'Jua', sans-serif;
     -webkit-transform: scale(1);
 }
 
