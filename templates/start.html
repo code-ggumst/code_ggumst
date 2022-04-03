@@ -44,6 +44,7 @@
                 })
             }
 
+
             $().ready(quiz_start())
 
             var question;
@@ -86,7 +87,6 @@
                                                <button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button>
                                            </div>`
 
-
                         $('#question').append(question_title)
                         $('#quiz_button').append(quiz_button)
 
@@ -102,6 +102,7 @@
                     }
                 })
             }
+
 
             //// 정오답 체크하기 ////
             // 첫번째 버튼
@@ -237,6 +238,7 @@
                 }
             }
 
+
             //// 결과 페이지 이동 ////
             function result() {
                 $.ajax({
@@ -248,6 +250,7 @@
                     }
                 })
             }
+
 
             //// 누적점수 로컬에 저장시키기 ////
             function plus_score() {
