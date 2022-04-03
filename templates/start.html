@@ -85,10 +85,11 @@
                                                <button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button>
                                                <button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button>
                                            </div>`
-
+                        
                         $('#question').append(question_title)
                         $('#quiz_button').append(quiz_button)
 
+                      
                         //// 정답 무작위 배열 //// 완벽하지않음 (더 좋은 랜덤방식 구현 or 임의로 정답 배열 필요)
                         $(document).ready(function () {
                             var button_position = $(".q")
