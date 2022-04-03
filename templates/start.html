@@ -23,7 +23,7 @@
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        <title>두번째 페이지</title>
+        <title>상식 퀴즈</title>
 
         <link rel="short icon" href="/static/img/icon.png">
         <link rel="stylesheet" href="/static/style.css" type="text/css">
@@ -43,6 +43,7 @@
                     }
                 })
             }
+
 
             $().ready(quiz_start())
 
@@ -86,7 +87,6 @@
                                                <button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button>
                                            </div>`
 
-
                         $('#question').append(question_title)
                         $('#quiz_button').append(quiz_button)
 
@@ -103,7 +103,9 @@
                     }
                 })
             }
-                        //// 정오답 체크하기 ////
+
+
+            //// 정오답 체크하기 ////
             // 첫번째 버튼
             function check1() {
                 $.ajax({
@@ -238,6 +240,7 @@
                 }
             }
 
+
             //// 결과 페이지 이동 ////
             function result() {
                 $.ajax({
@@ -249,6 +252,7 @@
                     }
                 })
             }
+
 
             //// 누적점수 로컬에 저장시키기 ////
             function plus_score() {
@@ -270,9 +274,6 @@
                 <div class="question" id="question"></div>
                 <div class="quiz_button" id="quiz_button"></div>
             </div>
-
-
-
         </div>
     </body>
 </html>
