@@ -11,7 +11,7 @@ db = client.codeggumst
 # 메인페이지
 @app.route('/')
 def main():
-    return render_template('index.html')
+    return render_template('main.html')
 
 
 # 퀴즈 시작하기
