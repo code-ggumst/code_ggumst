@@ -44,8 +44,9 @@
 
 
             //// 카카오 공유하기 ////
+            Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
+
             function kakao_link() {
-                Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
                 Kakao.Link.sendDefault({
                     objectType: 'feed',
                     content: {
@@ -79,12 +80,6 @@
             <div class="result_message">
                 <p id="text">레벨별 텍스트입니다</p>
             </div>
-            <div class="kakao_share">
-                <a class="kakao-link-btn" onclick="kakao_link()" href="javascript:;">
-                    <img class="kakao_icon"
-                         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오링크 보내기 버튼">
-                </a>
-            </div>
         </div>
         <div class="footer">
             <span onclick="restart()" class="restart_button">
@@ -94,8 +89,6 @@
                 <a class="kakao-link-btn" onclick="kakao_link()" href="javascript:;">
                     <button type="button" class="btn btn-warning kakao_icon" alt="카카오링크 보내기 버튼"
                     src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png">공유하기</button>
-<!--                    <img class="kakao_icon"-->
-<!--                    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오링크 보내기 버튼">-->
                 </a>
             </span>
         </div>
