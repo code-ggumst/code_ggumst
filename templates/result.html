@@ -26,13 +26,9 @@
 
         <link rel="short icon" href="/static/img/icon2.png">
         <link rel="stylesheet" href="../static/style2.css">
-        <script src="https://developers.kakao.com/sdk/js/kakao.min.js">    </script>
-        <!--<link rel="" href="/static/img/">-->
+        <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
         <script type="text/javascript">
-            //// 카카오 API 자바스크립트 키 ////
-            Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
-
             //// 다시하기 ////
             function restart() {
                 $.ajax({
@@ -45,9 +41,21 @@
                 })
             }
 
-            //// 카카오 링크 ////
             function kakao_link() {
-                Kakao.Link.sendCustom({templateId: 74390})
+                Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
+                Kakao.Link.sendDefault({
+                    objectType: 'feed',
+                    content: {
+                        title: '상식 퀴즈',
+                        imageUrl: document.getElementById("result_img").src,
+                        description: final_score + " / 15개 맞췄습니다.\n" + $("p[id=text]").text(),
+                        link: {
+                            webUrl: 'http://localhost:5000',
+                            mobileWebUrl: 'http://localhost:5000'
+                        }
+                    },
+                    buttonTitle: '퀴즈 하러가기'
+                })
             }
         </script>
     </head>
@@ -75,10 +83,12 @@
             </span>
             <span class="kakao_share">
                 <a class="kakao-link-btn" onclick="kakao_link()" href="javascript:;">
+
                     <button type="button" class="btn btn-warning kakao_icon" alt="카카오링크 보내기 버튼"
                     src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png">공유하기</button>
 {#                    <img class="kakao_icon"#}
 {#                         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오링크 보내기 버튼">#}
+
                 </a>
             </span>
         </div>
