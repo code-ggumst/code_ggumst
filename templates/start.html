@@ -45,6 +45,7 @@
             }
 
 
+            //// 퀴즈 불러오기 ////
             $().ready(quiz_start())
 
             var question;
@@ -74,7 +75,6 @@
                         answer2 = all_quiz[i]['answer2']
                         answer3 = all_quiz[i]['answer3']
                         answer4 = all_quiz[i]['answer4']
-                        correct_answer = all_quiz[i]['correct']
 
                         let question_title = `<div>
                                                 <p>${question}</p>
@@ -126,7 +126,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
-                                text: `정답은: "${correct_answer}"`,
+                                text: `정답은: "${answer1}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
@@ -156,7 +156,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
-                                text: `정답은: "${correct_answer}"`,
+                                text: `정답은: "${answer1}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
@@ -186,7 +186,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
-                                text: `정답은: "${correct_answer}"`,
+                                text: `정답은: "${answer1}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
@@ -216,7 +216,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: "오답입니다.",
-                                text:`정답은: "${correct_answer}"`,
+                                text:`정답은: "${answer1}"`,
                                 timerProgressBar: true,
                                 timer: 1500,
                                 showConfirmButton: false
