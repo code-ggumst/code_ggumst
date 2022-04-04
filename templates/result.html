@@ -36,7 +36,7 @@
                     type: "get",
                     url: "/",
                     data: {},
-                    success: function (response) {
+                    success: function () {
                         window.location.href = '/';
                     }
                 })
@@ -45,8 +45,7 @@
 
             //// 카카오 공유하기 ////
             Kakao.init('06c9cf6e0fcf141eed24d21dfa94750d');
-
-            function kakao_link() {
+            function kakao_share() {
                 Kakao.Link.sendDefault({
                     objectType: 'feed',
                     content: {
@@ -61,6 +60,15 @@
                     buttonTitle: '퀴즈 하러가기'
                 })
             }
+
+
+            //// 네이버 공유하기 ////
+            // function naver_share() {
+            //     var Url = 'http://3.34.140.190';
+            //     var Title = '상식 퀴즈 : 여러분이 알고 있는 상식! 어디까지 알고 계신가요?';
+            //     var shareURL = 'https://share.naver.com/web/shareView?url='+encodeURIComponent(Url)+'&title='+encodeURIComponent(Title);
+            //     window.open(shareURL);
+            // }
         </script>
     </head>
     <body>
@@ -86,11 +94,14 @@
                 <button type="button" class="btn btn-warning">다시하기</button>
             </span>
             <span class="kakao_share">
-                <a class="kakao-link-btn" onclick="kakao_link()" href="javascript:;">
+                <a class="kakao-link-btn" onclick="kakao_share()" href="javascript:;">
                     <button type="button" class="btn btn-warning kakao_icon" alt="카카오링크 보내기 버튼"
                     src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png">공유하기</button>
                 </a>
             </span>
+<!--            <span onclick="naver_share()">-->
+<!--                <button>네이버 공유하기</button>-->
+<!--            </span>-->
         </div>
     </div>
     </body>
