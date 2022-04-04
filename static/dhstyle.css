@@ -86,3 +86,30 @@ body {
 .btn-warning:hover {
     background-color: darkorange;
 }
+
+/* 모바일 css*/
+
+@media (max-width: 480px) {
+    .wrapper {
+        width: 350px;
+        height: 650px;
+    }
+    .contents {
+        width: 320px;
+    }
+    .header h1 {
+        font-size: 40px;
+    }
+    .section {
+        padding: 0;
+    }
+    .message {
+        font-size: 19px;
+    }
+    .info {
+        font-size: 19px;
+    }
+    .btn-warning {
+        font-size: 16px;
+    }
+}
