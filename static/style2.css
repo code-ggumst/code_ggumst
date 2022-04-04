@@ -102,3 +102,29 @@ body {
 .kakao_icon:hover {
     -webkit-transform: scale(1.2);
 }
+
+/* 모바일 css*/
+
+@media (max-width: 480px) {
+    .wrapper {
+        width: 350px;
+        height: 650px;
+    }
+    .header {
+        margin-top: 20px;
+    }
+    .header h1 {
+        font-size: 30px;
+    }
+    .score_screen {
+        font-size: 26px;
+    }
+    .result_message {
+        font-size: 25px;
+    }
+    .btn-warning {
+        font-size: 20px;
+    }
+
+
+}
