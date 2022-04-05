@@ -105,24 +105,50 @@ body {
 
 /* 모바일 css*/
 
-@media (max-width: 480px) {
+@media (max-width: 660px) {
     .wrapper {
-        width: 350px;
-        height: 650px;
+        width: 100%;
     }
+}
+
+@media (max-height: 660px) {
+    .wrapper {
+        height: 100%;
+    }
+    #result_img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-height: 590px) {
     .header {
-        margin-top: 20px;
+        margin: 20px 0 0 0;
     }
-    .header h1 {
+    .header h1{
         font-size: 30px;
     }
     .score_screen {
-        font-size: 26px;
+        font-size: 20px;
+    }
+    .main_img {
+        padding: 10px;
+    }
+    #result_img {
+        width: 150px;
+        height: 150px;
     }
     .result_message {
-        font-size: 25px;
+        font-size: 20px;
+    }
+    #text {
+        margin: 0;
     }
     .btn-warning {
-        font-size: 20px;
+        font-size: 22px;
+        -webkit-transform: scale(0.8);
+    }
+    .footer {
+        padding: 0;
     }
 }
