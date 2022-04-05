@@ -3,5 +3,4 @@
    
 상식퀴즈 <hrel>http://codeggumst-quiz.site</a>
    
-<img width="300px" height="300px" src="https://i.imgur.com/mx4UGTF.png">
-<img width="300px" height="300px" src="https://imgur.com/wvBuqmY">
+<img width="300px" height="300px" src="https://i.imgur.com/mx4UGTF.png"> <img width="300px" height="300px" src="https://imgur.com/wvBuqmY.png"> <img width="300px" height="300px" src="https://imgur.com/6iBXcTp.png">
