@@ -78,16 +78,16 @@
                                                 <p>${question}</p>
                                               </div>`
                         let quiz_button = `<div>
-                                               <button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button>
-                                               <button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button>
-                                               <button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button>
-                                               <button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button>
+                                               <div><button id="button1" onclick="quiz_start(); count(); check1();" type="button" class="q">${answer1}</button></div>
+                                               <div><button id="button2" onclick="quiz_start(); count(); check2();" type="button" class="q">${answer2}</button></div>
+                                               <div><button id="button3" onclick="quiz_start(); count(); check3();" type="button" class="q">${answer3}</button></div>
+                                               <div><button id="button4" onclick="quiz_start(); count(); check4();" type="button" class="q">${answer4}</button></div>
                                            </div>`
 
                         $('#question').append(question_title)
                         $('#quiz_button').append(quiz_button)
 
-                      
+
                         //// 정답 무작위 배열 ////
                         $(document).ready(function () {
                             var button_position = $(".q")
@@ -251,17 +251,19 @@
         </script>
     </head>
     <body>
-        <div class="wrapper">
-            <div class="header">
-                <span class="head">Quiz</span>
-                <span class="head" id="result">1</span>
-                <span class="head">/</span>
-                <span class="head">15</span>
-                <span onclick="restart()" class="regame"><img class="regame_img" src="/static/img/refresh.png">다시하기</span>
-            </div>
-            <div class="main_page">
-                <div class="question" id="question"></div>
-                <div class="quiz_button" id="quiz_button"></div>
+        <div class="container">
+            <div class="wrapper">
+                <div class="header">
+                    <span class="head">Quiz</span>
+                    <span class="head" id="result">1</span>
+                    <span class="head">/</span>
+                    <span class="head">15</span>
+                <div onclick="restart()" class="regame"><img class="regame_img" src="/static/img/refresh.png">다시하기</div>
+                </div>
+                <div class="main_page">
+                    <div class="question" id="question"></div>
+                    <div class="quiz_button" id="quiz_button"></div>
+                </div>
             </div>
         </div>
     </body>
