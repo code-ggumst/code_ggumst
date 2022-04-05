@@ -4,4 +4,4 @@
 상식퀴즈 <hrel>http://codeggumst-quiz.site
 <br/><br/>
    
-<img width="260px" height="260px" src="https://i.imgur.com/mx4UGTF.png"><img width="260px" height="260px" src="https://imgur.com/wvBuqmY.png"><img width="260px" height="260px" src="https://imgur.com/6iBXcTp.png">
+<img width="270px" height="270px" src="https://i.imgur.com/mx4UGTF.png"><img width="270px" height="270px" src="https://imgur.com/wvBuqmY.png"><img width="270px" height="270px" src="https://imgur.com/6iBXcTp.png">
