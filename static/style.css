@@ -27,11 +27,14 @@ body {
     box-shadow: 20px 20px 20px gray;
 }
 
+.container {
+    margin: auto;
+}
+
 .header {
     height: auto;
     text-align: left;
-    padding: 20px 0;
-    margin-left: 40px;
+    padding: 20px 0 0 40px;
     font-size: 20px;
     font-family: 'Jua', sans-serif;
 }
@@ -40,27 +43,18 @@ body {
     margin: 5px;
 }
 
-
 #result {
     color: salmon;
 }
 
 .main_page {
-    width: 600px;
-    height: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
 }
 
 /* 문제 */
 .question{
-    /*margin: 50px 0px 80px 0px ;*/
-    margin-bottom: 30px;
-    margin-top: 60px;
-    padding-bottom: 15px;
+    height: 75px;
+    margin: 40px 15px 0 15px;
 }
 
 /* 글자수가 많아서 사이즈 변경 */
@@ -70,24 +64,18 @@ body {
 
 /* 정답 버튼 툴 */
 .quiz_button{
-    position: absolute;
-    width: 600px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding-top: 150px;
-    text-align: center;
+    padding-top: 50px;
 }
 
 /* 정답버튼 */
 .q {
+    width: 500px;
+    height: 50px;
     font-size: 20px;
+    margin-bottom: 40px;
     background-color: rgb(248, 203, 172);
     border: 0px;
     border-radius: 10px;
-    margin-bottom: 25px;
-    width:  500px;
-    height: 50px;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -97,7 +85,8 @@ body {
 
 .regame {
     font-weight: bold;
-    margin-left: 330px;
+    float: right;
+    margin-right: 20px;
     cursor: pointer;
 }
 
@@ -108,37 +97,87 @@ body {
 }
 
 /* 모바일 css*/
-
-@media (max-width: 480px) {
+@media (max-width: 660px) {
     .wrapper {
-        width: 350px;
-        height: 650px;
+        width: 100%;
     }
     .header {
-        margin-top: 10px;
-        font-size: 14px;
-        margin-left: 25px;
-    }
-    .regame {
-        margin-left: 106px;
-    }
-    .main_page {
-        width: 320px;
-    }
-    .question {
-    margin-bottom: 20px;
-    margin-top: 40px;
-    padding-bottom: 10px;
-    }
-    .question p{
-        font-size: 22px;
-    }
-    .quiz_button{
-        width: 200px;
+        font-size: 16px;
     }
     .q {
-        font-size: 15px;
-        width:  200px;
+        width: 400px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 460px) {
+    .wrapper {
+        width: 100%;
+    }
+    .header {
+        font-size: 16px;
+    }
+    .question p{
+        font-size: 20px;
+    }
+    .q {
+        width: 300px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 375px) {
+    .wrapper {
+        width: 100%;
+    }
+    .question p{
+        font-size: 20px;
+    }
+    .q {
+        width: 200px;
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 680px) {
+    .wrapper {
+        height: 100%;
+    }
+    .question{
+        margin: 40px 10px 0 10px;
+    }
+    .q {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 550px) {
+    .question{
+        margin: 40px 10px 0 0;
+    }
+    .q {
+        margin-bottom: 20px;
+        font-size: 13px;
+        height: 40px;
+    }
+    .quiz_button{
+        padding-top: 30px;
+    }
+    .question p{
+        font-size: 17px;
+    }
+}
+
+@media (max-height: 450px) {
+    .quiz_button{
+        padding-top: 20px;
+    }
+    .question{
         height: 50px;
+        margin: 20px 15px 0 15px;
+    }
+    .question p{
+        font-size: 15px;
     }
 }
