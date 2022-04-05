@@ -104,7 +104,6 @@ body {
 }
 
 /* 모바일 css*/
-
 @media (max-width: 660px) {
     .wrapper {
         width: 100%;
